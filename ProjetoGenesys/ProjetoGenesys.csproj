@@ -4,7 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+<<<<<<< HEAD
     <ProjectGuid>{8D9C4AF5-4E86-4A3C-BDED-411F60CAD95B}</ProjectGuid>
+=======
+    <ProjectGuid>{95678A45-51D1-44BB-A3D9-348DCE026390}</ProjectGuid>
+>>>>>>> b1866ecd5a6fd559efb9ffdd740d9dc4cb6bd3a6
     <OutputType>WinExe</OutputType>
     <RootNamespace>ProjetoGenesys</RootNamespace>
     <AssemblyName>ProjetoGenesys</AssemblyName>

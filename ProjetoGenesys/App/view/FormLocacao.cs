@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ProjetoGenesys
+namespace ProjetoGenesys.App.view
 {
-    public partial class Form1 : Form
+    public partial class FormLocacao : Form
     {
-        public Form1()
+        public FormLocacao()
         {
             InitializeComponent();
         }

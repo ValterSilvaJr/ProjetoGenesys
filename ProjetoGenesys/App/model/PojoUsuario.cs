@@ -41,5 +41,81 @@
         {
             this.senha = senha;
         }
+        class PojoEndereco : PojoUsuario
+        {
+            private int id_endereco;
+            private string logradouro;
+            private string numero;
+            private string cep;
+            private string bairro;
+            private string cidade;
+            private string uf;
+            private string pais;
+
+            public int getIdEndereco()
+            {
+                return this.id_endereco;
+            }
+            public void setIdEndereco(int id_endereco)
+            {
+                this.id_endereco = id_endereco;
+            }
+            public string getLogradouro()
+            {
+                return this.logradouro;
+            }
+            public void setLogradouro(string logradouro)
+            {
+                this.logradouro = logradouro;
+            }
+            public string getNumero()
+            {
+                return this.numero;
+            }
+            public void setNumero(string numero)
+            {
+                this.numero = numero;
+            }
+            public string getCep()
+            {
+                return this.cep;
+            }
+            public void setCep(string cep)
+            {
+                this.cep = cep;
+            }
+            public string getBairro()
+            {
+                return this.bairro;
+            }
+            public void setBairro(string bairro)
+            {
+                this.bairro = bairro;
+            }
+            public string getCidade()
+            {
+                return this.cidade;
+            }
+            public void setCidade(string cidade)
+            {
+                this.cidade = cidade;
+            }
+            public string getUf()
+            {
+                return this.uf;
+            }
+            public void setUf(string uf)
+            {
+                this.uf = uf;
+            }
+            public string getPais()
+            {
+                return this.pais;
+            }
+            public void setPais(string pais)
+            {
+                this.pais = pais;
+            }
+        }
     }
 }

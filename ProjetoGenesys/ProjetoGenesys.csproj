@@ -61,27 +61,52 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App\controller\Conexao.cs" />
+    <Compile Include="App\model\Conexao.cs" />
     <Compile Include="App\model\PojoCliente.cs" />
     <Compile Include="App\model\PojoFuncionario.cs" />
     <Compile Include="App\model\PojoUsuario.cs" />
     <Compile Include="App\model\PojoVeiculo.cs" />
-    <Compile Include="App\view\LoginForm.cs">
+    <Compile Include="App\model\UsuarioDao.cs" />
+    <Compile Include="App\view\FormCadastroUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="App\view\LoginForm.Designer.cs">
-      <DependentUpon>LoginForm.cs</DependentUpon>
+    <Compile Include="App\view\FormCadastroUsuario.Designer.cs">
+      <DependentUpon>FormCadastroUsuario.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
+    <Compile Include="App\view\FormCadastroVeiculo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="App\view\FormCadastroVeiculo.Designer.cs">
+      <DependentUpon>FormCadastroVeiculo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App\view\FormLocacao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="App\view\FormLocacao.Designer.cs">
+      <DependentUpon>FormLocacao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App\view\FormLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="App\view\FormLogin.Designer.cs">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormIndex.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormIndex.Designer.cs">
+      <DependentUpon>FormIndex.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="App\view\FormCadastroUsuario.resx">
+      <DependentUpon>FormCadastroUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App\view\FormLogin.resx">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormIndex.resx">
+      <DependentUpon>FormIndex.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -117,6 +142,8 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="App\controller\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

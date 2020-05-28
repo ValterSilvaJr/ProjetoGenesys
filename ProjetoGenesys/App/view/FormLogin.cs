@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace ProjetoGenesys.App.view
 {
-    public partial class LoginForm : Form
+    public partial class FormLogin : Form
     {
-        public LoginForm()
+        public FormLogin()
         {
             InitializeComponent();
         }

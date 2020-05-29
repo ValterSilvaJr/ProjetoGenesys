@@ -8,6 +8,7 @@
         private string marca;
         private string modelo;
         private string placa;
+        private bool disponivel;
 
         private int getIdVeiculo()
         {
@@ -56,6 +57,14 @@
         private void setPlaca(string placa)
         {
             this.placa = placa;
+        }
+        private bool getDisponivel()
+        {
+            return this.disponivel;
+        }
+        private void setDisponivel(bool disponivel)
+        {
+            this.disponivel = disponivel;
         }
     }
     class PojoVeiculoLeve : PojoVeiculo

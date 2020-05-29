@@ -45,18 +45,18 @@
             this.btnPessoaFisica = new System.Windows.Forms.Button();
             this.btnCadastrarUsuario = new System.Windows.Forms.Button();
             this.pnlLogo = new System.Windows.Forms.Panel();
+            this.pcbLogo = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pnlChildForm = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pcbLogo = new System.Windows.Forms.PictureBox();
             this.pnlSlideMenu.SuspendLayout();
             this.pnlLocacaoSubmenu.SuspendLayout();
             this.pnlVeiculoSubmenu.SuspendLayout();
             this.pnlUsuarioSubmenu.SuspendLayout();
             this.pnlLogo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pcbLogo)).BeginInit();
             this.pnlChildForm.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pcbLogo)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlSlideMenu
@@ -310,6 +310,17 @@
             this.pnlLogo.Size = new System.Drawing.Size(250, 95);
             this.pnlLogo.TabIndex = 0;
             // 
+            // pcbLogo
+            // 
+            this.pcbLogo.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pcbLogo.Image = ((System.Drawing.Image)(resources.GetObject("pcbLogo.Image")));
+            this.pcbLogo.Location = new System.Drawing.Point(25, 24);
+            this.pcbLogo.Name = "pcbLogo";
+            this.pcbLogo.Size = new System.Drawing.Size(200, 50);
+            this.pcbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pcbLogo.TabIndex = 0;
+            this.pcbLogo.TabStop = false;
+            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(24)))), ((int)(((byte)(45)))));
@@ -340,19 +351,6 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // pcbLogo
-            // 
-            this.pcbLogo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pcbLogo.Image = ((System.Drawing.Image)(resources.GetObject("pcbLogo.Image")));
-            this.pcbLogo.Location = new System.Drawing.Point(25, 24);
-            this.pcbLogo.Name = "pcbLogo";
-            this.pcbLogo.Size = new System.Drawing.Size(200, 50);
-            this.pcbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pcbLogo.TabIndex = 0;
-            this.pcbLogo.TabStop = false;
-            // 
             // FormIndex
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -375,9 +373,9 @@
             this.pnlVeiculoSubmenu.ResumeLayout(false);
             this.pnlUsuarioSubmenu.ResumeLayout(false);
             this.pnlLogo.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pcbLogo)).EndInit();
             this.pnlChildForm.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pcbLogo)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -21,5 +21,25 @@ namespace ProjetoGenesys.App.view
         {
             Close();
         }
+
+        private void label14_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void lblCidade_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblTurno_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

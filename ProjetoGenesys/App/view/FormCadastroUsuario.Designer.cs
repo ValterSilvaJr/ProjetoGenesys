@@ -33,7 +33,17 @@
             this.lblEmail = new System.Windows.Forms.Label();
             this.lblSenha = new System.Windows.Forms.Label();
             this.pnlDadosContato = new System.Windows.Forms.Panel();
+            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.txtNome = new System.Windows.Forms.TextBox();
+            this.mskSenha = new System.Windows.Forms.MaskedTextBox();
             this.pnlEndereco = new System.Windows.Forms.Panel();
+            this.txtPais = new System.Windows.Forms.TextBox();
+            this.txtUf = new System.Windows.Forms.TextBox();
+            this.txtBairro = new System.Windows.Forms.TextBox();
+            this.txtCidade = new System.Windows.Forms.TextBox();
+            this.txtNumero = new System.Windows.Forms.TextBox();
+            this.txtLogradouro = new System.Windows.Forms.TextBox();
+            this.mskCep = new System.Windows.Forms.MaskedTextBox();
             this.lblPais = new System.Windows.Forms.Label();
             this.lblCidade = new System.Windows.Forms.Label();
             this.lblBairro = new System.Windows.Forms.Label();
@@ -42,43 +52,36 @@
             this.lblUf = new System.Windows.Forms.Label();
             this.lblNumero = new System.Windows.Forms.Label();
             this.pnlCargo = new System.Windows.Forms.Panel();
+            this.txtTurno = new System.Windows.Forms.TextBox();
+            this.txtSetor = new System.Windows.Forms.TextBox();
+            this.txtCargo = new System.Windows.Forms.TextBox();
+            this.lblTurno = new System.Windows.Forms.Label();
+            this.lblSetor = new System.Windows.Forms.Label();
+            this.lblCargo = new System.Windows.Forms.Label();
             this.pnlPF = new System.Windows.Forms.Panel();
+            this.mskDataNasc = new System.Windows.Forms.MaskedTextBox();
+            this.mskCpf = new System.Windows.Forms.MaskedTextBox();
             this.lblCpf = new System.Windows.Forms.Label();
             this.lblDataNasc = new System.Windows.Forms.Label();
             this.pnlPJ = new System.Windows.Forms.Panel();
+            this.txtRazaoSocial = new System.Windows.Forms.TextBox();
+            this.txtNomeFantasia = new System.Windows.Forms.TextBox();
+            this.mskInscEst = new System.Windows.Forms.MaskedTextBox();
+            this.mskCnpj = new System.Windows.Forms.MaskedTextBox();
             this.lblCnpj = new System.Windows.Forms.Label();
             this.lblInscEst = new System.Windows.Forms.Label();
             this.lblRazaoSocial = new System.Windows.Forms.Label();
             this.lblNomeFantasia = new System.Windows.Forms.Label();
-            this.lblCargo = new System.Windows.Forms.Label();
-            this.lblSetor = new System.Windows.Forms.Label();
-            this.lblTurno = new System.Windows.Forms.Label();
             this.pnlContainer = new System.Windows.Forms.Panel();
-            this.mskCpf = new System.Windows.Forms.MaskedTextBox();
-            this.mskDataNasc = new System.Windows.Forms.MaskedTextBox();
-            this.mskCnpj = new System.Windows.Forms.MaskedTextBox();
-            this.mskInscEst = new System.Windows.Forms.MaskedTextBox();
-            this.mskCep = new System.Windows.Forms.MaskedTextBox();
-            this.mskSenha = new System.Windows.Forms.MaskedTextBox();
-            this.txtNome = new System.Windows.Forms.TextBox();
-            this.txtEmail = new System.Windows.Forms.TextBox();
-            this.txtNomeFantasia = new System.Windows.Forms.TextBox();
-            this.txtRazaoSocial = new System.Windows.Forms.TextBox();
-            this.txtTurno = new System.Windows.Forms.TextBox();
-            this.txtSetor = new System.Windows.Forms.TextBox();
-            this.txtCargo = new System.Windows.Forms.TextBox();
-            this.txtCidade = new System.Windows.Forms.TextBox();
-            this.txtNumero = new System.Windows.Forms.TextBox();
-            this.txtLogradouro = new System.Windows.Forms.TextBox();
-            this.txtBairro = new System.Windows.Forms.TextBox();
-            this.txtUf = new System.Windows.Forms.TextBox();
-            this.txtPais = new System.Windows.Forms.TextBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btnInserir = new System.Windows.Forms.Button();
             this.pnlDadosContato.SuspendLayout();
             this.pnlEndereco.SuspendLayout();
             this.pnlCargo.SuspendLayout();
             this.pnlPF.SuspendLayout();
             this.pnlPJ.SuspendLayout();
             this.pnlContainer.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnFechar
@@ -139,7 +142,27 @@
             this.pnlDadosContato.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.pnlDadosContato.Size = new System.Drawing.Size(660, 131);
             this.pnlDadosContato.TabIndex = 4;
-            this.pnlDadosContato.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // txtEmail
+            // 
+            this.txtEmail.Location = new System.Drawing.Point(123, 52);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(305, 23);
+            this.txtEmail.TabIndex = 6;
+            // 
+            // txtNome
+            // 
+            this.txtNome.Location = new System.Drawing.Point(123, 12);
+            this.txtNome.Name = "txtNome";
+            this.txtNome.Size = new System.Drawing.Size(305, 23);
+            this.txtNome.TabIndex = 5;
+            // 
+            // mskSenha
+            // 
+            this.mskSenha.Location = new System.Drawing.Point(123, 92);
+            this.mskSenha.Name = "mskSenha";
+            this.mskSenha.Size = new System.Drawing.Size(171, 23);
+            this.mskSenha.TabIndex = 4;
             // 
             // pnlEndereco
             // 
@@ -167,6 +190,55 @@
             this.pnlEndereco.Size = new System.Drawing.Size(660, 126);
             this.pnlEndereco.TabIndex = 5;
             // 
+            // txtPais
+            // 
+            this.txtPais.Location = new System.Drawing.Point(123, 92);
+            this.txtPais.Name = "txtPais";
+            this.txtPais.Size = new System.Drawing.Size(171, 23);
+            this.txtPais.TabIndex = 19;
+            // 
+            // txtUf
+            // 
+            this.txtUf.Location = new System.Drawing.Point(611, 52);
+            this.txtUf.Name = "txtUf";
+            this.txtUf.Size = new System.Drawing.Size(23, 23);
+            this.txtUf.TabIndex = 18;
+            // 
+            // txtBairro
+            // 
+            this.txtBairro.Location = new System.Drawing.Point(265, 52);
+            this.txtBairro.Name = "txtBairro";
+            this.txtBairro.Size = new System.Drawing.Size(137, 23);
+            this.txtBairro.TabIndex = 17;
+            // 
+            // txtCidade
+            // 
+            this.txtCidade.Location = new System.Drawing.Point(472, 52);
+            this.txtCidade.Name = "txtCidade";
+            this.txtCidade.Size = new System.Drawing.Size(106, 23);
+            this.txtCidade.TabIndex = 14;
+            // 
+            // txtNumero
+            // 
+            this.txtNumero.Location = new System.Drawing.Point(472, 9);
+            this.txtNumero.Name = "txtNumero";
+            this.txtNumero.Size = new System.Drawing.Size(162, 23);
+            this.txtNumero.TabIndex = 15;
+            // 
+            // txtLogradouro
+            // 
+            this.txtLogradouro.Location = new System.Drawing.Point(123, 7);
+            this.txtLogradouro.Name = "txtLogradouro";
+            this.txtLogradouro.Size = new System.Drawing.Size(279, 23);
+            this.txtLogradouro.TabIndex = 16;
+            // 
+            // mskCep
+            // 
+            this.mskCep.Location = new System.Drawing.Point(123, 52);
+            this.mskCep.Name = "mskCep";
+            this.mskCep.Size = new System.Drawing.Size(84, 23);
+            this.mskCep.TabIndex = 9;
+            // 
             // lblPais
             // 
             this.lblPais.AutoSize = true;
@@ -184,7 +256,6 @@
             this.lblCidade.Size = new System.Drawing.Size(52, 17);
             this.lblCidade.TabIndex = 7;
             this.lblCidade.Text = "Cidade";
-            this.lblCidade.Click += new System.EventHandler(this.lblCidade_Click);
             // 
             // lblBairro
             // 
@@ -249,6 +320,54 @@
             this.pnlCargo.Size = new System.Drawing.Size(660, 128);
             this.pnlCargo.TabIndex = 6;
             // 
+            // txtTurno
+            // 
+            this.txtTurno.Location = new System.Drawing.Point(123, 92);
+            this.txtTurno.Name = "txtTurno";
+            this.txtTurno.Size = new System.Drawing.Size(171, 23);
+            this.txtTurno.TabIndex = 11;
+            // 
+            // txtSetor
+            // 
+            this.txtSetor.Location = new System.Drawing.Point(123, 52);
+            this.txtSetor.Name = "txtSetor";
+            this.txtSetor.Size = new System.Drawing.Size(171, 23);
+            this.txtSetor.TabIndex = 12;
+            // 
+            // txtCargo
+            // 
+            this.txtCargo.Location = new System.Drawing.Point(123, 12);
+            this.txtCargo.Name = "txtCargo";
+            this.txtCargo.Size = new System.Drawing.Size(171, 23);
+            this.txtCargo.TabIndex = 13;
+            // 
+            // lblTurno
+            // 
+            this.lblTurno.AutoSize = true;
+            this.lblTurno.Location = new System.Drawing.Point(13, 95);
+            this.lblTurno.Name = "lblTurno";
+            this.lblTurno.Size = new System.Drawing.Size(46, 17);
+            this.lblTurno.TabIndex = 8;
+            this.lblTurno.Text = "Turno";
+            // 
+            // lblSetor
+            // 
+            this.lblSetor.AutoSize = true;
+            this.lblSetor.Location = new System.Drawing.Point(13, 55);
+            this.lblSetor.Name = "lblSetor";
+            this.lblSetor.Size = new System.Drawing.Size(42, 17);
+            this.lblSetor.TabIndex = 7;
+            this.lblSetor.Text = "Setor";
+            // 
+            // lblCargo
+            // 
+            this.lblCargo.AutoSize = true;
+            this.lblCargo.Location = new System.Drawing.Point(13, 15);
+            this.lblCargo.Name = "lblCargo";
+            this.lblCargo.Size = new System.Drawing.Size(46, 17);
+            this.lblCargo.TabIndex = 6;
+            this.lblCargo.Text = "Cargo";
+            // 
             // pnlPF
             // 
             this.pnlPF.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
@@ -264,6 +383,20 @@
             this.pnlPF.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.pnlPF.Size = new System.Drawing.Size(660, 86);
             this.pnlPF.TabIndex = 7;
+            // 
+            // mskDataNasc
+            // 
+            this.mskDataNasc.Location = new System.Drawing.Point(123, 52);
+            this.mskDataNasc.Name = "mskDataNasc";
+            this.mskDataNasc.Size = new System.Drawing.Size(171, 23);
+            this.mskDataNasc.TabIndex = 6;
+            // 
+            // mskCpf
+            // 
+            this.mskCpf.Location = new System.Drawing.Point(123, 12);
+            this.mskCpf.Name = "mskCpf";
+            this.mskCpf.Size = new System.Drawing.Size(171, 23);
+            this.mskCpf.TabIndex = 5;
             // 
             // lblCpf
             // 
@@ -303,6 +436,34 @@
             this.pnlPJ.Size = new System.Drawing.Size(660, 166);
             this.pnlPJ.TabIndex = 8;
             // 
+            // txtRazaoSocial
+            // 
+            this.txtRazaoSocial.Location = new System.Drawing.Point(123, 92);
+            this.txtRazaoSocial.Name = "txtRazaoSocial";
+            this.txtRazaoSocial.Size = new System.Drawing.Size(171, 23);
+            this.txtRazaoSocial.TabIndex = 10;
+            // 
+            // txtNomeFantasia
+            // 
+            this.txtNomeFantasia.Location = new System.Drawing.Point(123, 132);
+            this.txtNomeFantasia.Name = "txtNomeFantasia";
+            this.txtNomeFantasia.Size = new System.Drawing.Size(171, 23);
+            this.txtNomeFantasia.TabIndex = 9;
+            // 
+            // mskInscEst
+            // 
+            this.mskInscEst.Location = new System.Drawing.Point(123, 52);
+            this.mskInscEst.Name = "mskInscEst";
+            this.mskInscEst.Size = new System.Drawing.Size(171, 23);
+            this.mskInscEst.TabIndex = 8;
+            // 
+            // mskCnpj
+            // 
+            this.mskCnpj.Location = new System.Drawing.Point(123, 12);
+            this.mskCnpj.Name = "mskCnpj";
+            this.mskCnpj.Size = new System.Drawing.Size(171, 23);
+            this.mskCnpj.TabIndex = 7;
+            // 
             // lblCnpj
             // 
             this.lblCnpj.AutoSize = true;
@@ -329,7 +490,6 @@
             this.lblRazaoSocial.Size = new System.Drawing.Size(91, 17);
             this.lblRazaoSocial.TabIndex = 4;
             this.lblRazaoSocial.Text = "Razão Social";
-            this.lblRazaoSocial.Click += new System.EventHandler(this.label14_Click);
             // 
             // lblNomeFantasia
             // 
@@ -340,34 +500,6 @@
             this.lblNomeFantasia.TabIndex = 3;
             this.lblNomeFantasia.Text = "Nome Fantasia";
             // 
-            // lblCargo
-            // 
-            this.lblCargo.AutoSize = true;
-            this.lblCargo.Location = new System.Drawing.Point(13, 15);
-            this.lblCargo.Name = "lblCargo";
-            this.lblCargo.Size = new System.Drawing.Size(46, 17);
-            this.lblCargo.TabIndex = 6;
-            this.lblCargo.Text = "Cargo";
-            // 
-            // lblSetor
-            // 
-            this.lblSetor.AutoSize = true;
-            this.lblSetor.Location = new System.Drawing.Point(13, 55);
-            this.lblSetor.Name = "lblSetor";
-            this.lblSetor.Size = new System.Drawing.Size(42, 17);
-            this.lblSetor.TabIndex = 7;
-            this.lblSetor.Text = "Setor";
-            // 
-            // lblTurno
-            // 
-            this.lblTurno.AutoSize = true;
-            this.lblTurno.Location = new System.Drawing.Point(13, 95);
-            this.lblTurno.Name = "lblTurno";
-            this.lblTurno.Size = new System.Drawing.Size(46, 17);
-            this.lblTurno.TabIndex = 8;
-            this.lblTurno.Text = "Turno";
-            this.lblTurno.Click += new System.EventHandler(this.lblTurno_Click);
-            // 
             // pnlContainer
             // 
             this.pnlContainer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -375,6 +507,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlContainer.AutoScroll = true;
             this.pnlContainer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            this.pnlContainer.Controls.Add(this.panel1);
             this.pnlContainer.Controls.Add(this.pnlEndereco);
             this.pnlContainer.Controls.Add(this.pnlCargo);
             this.pnlContainer.Controls.Add(this.pnlPJ);
@@ -382,148 +515,34 @@
             this.pnlContainer.Controls.Add(this.pnlDadosContato);
             this.pnlContainer.Location = new System.Drawing.Point(6, 38);
             this.pnlContainer.Name = "pnlContainer";
-            this.pnlContainer.Size = new System.Drawing.Size(677, 421);
+            this.pnlContainer.Size = new System.Drawing.Size(677, 644);
             this.pnlContainer.TabIndex = 9;
             // 
-            // mskCpf
+            // panel1
             // 
-            this.mskCpf.Location = new System.Drawing.Point(123, 12);
-            this.mskCpf.Name = "mskCpf";
-            this.mskCpf.Size = new System.Drawing.Size(171, 23);
-            this.mskCpf.TabIndex = 5;
+            this.panel1.Controls.Add(this.btnInserir);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 637);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(660, 62);
+            this.panel1.TabIndex = 9;
             // 
-            // mskDataNasc
+            // btnInserir
             // 
-            this.mskDataNasc.Location = new System.Drawing.Point(123, 52);
-            this.mskDataNasc.Name = "mskDataNasc";
-            this.mskDataNasc.Size = new System.Drawing.Size(171, 23);
-            this.mskDataNasc.TabIndex = 6;
-            // 
-            // mskCnpj
-            // 
-            this.mskCnpj.Location = new System.Drawing.Point(123, 12);
-            this.mskCnpj.Name = "mskCnpj";
-            this.mskCnpj.Size = new System.Drawing.Size(171, 23);
-            this.mskCnpj.TabIndex = 7;
-            // 
-            // mskInscEst
-            // 
-            this.mskInscEst.Location = new System.Drawing.Point(123, 52);
-            this.mskInscEst.Name = "mskInscEst";
-            this.mskInscEst.Size = new System.Drawing.Size(171, 23);
-            this.mskInscEst.TabIndex = 8;
-            // 
-            // mskCep
-            // 
-            this.mskCep.Location = new System.Drawing.Point(123, 52);
-            this.mskCep.Name = "mskCep";
-            this.mskCep.Size = new System.Drawing.Size(84, 23);
-            this.mskCep.TabIndex = 9;
-            // 
-            // mskSenha
-            // 
-            this.mskSenha.Location = new System.Drawing.Point(123, 92);
-            this.mskSenha.Name = "mskSenha";
-            this.mskSenha.Size = new System.Drawing.Size(171, 23);
-            this.mskSenha.TabIndex = 4;
-            // 
-            // txtNome
-            // 
-            this.txtNome.Location = new System.Drawing.Point(123, 12);
-            this.txtNome.Name = "txtNome";
-            this.txtNome.Size = new System.Drawing.Size(305, 23);
-            this.txtNome.TabIndex = 5;
-            // 
-            // txtEmail
-            // 
-            this.txtEmail.Location = new System.Drawing.Point(123, 52);
-            this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(305, 23);
-            this.txtEmail.TabIndex = 6;
-            // 
-            // txtNomeFantasia
-            // 
-            this.txtNomeFantasia.Location = new System.Drawing.Point(123, 132);
-            this.txtNomeFantasia.Name = "txtNomeFantasia";
-            this.txtNomeFantasia.Size = new System.Drawing.Size(171, 23);
-            this.txtNomeFantasia.TabIndex = 9;
-            // 
-            // txtRazaoSocial
-            // 
-            this.txtRazaoSocial.Location = new System.Drawing.Point(123, 92);
-            this.txtRazaoSocial.Name = "txtRazaoSocial";
-            this.txtRazaoSocial.Size = new System.Drawing.Size(171, 23);
-            this.txtRazaoSocial.TabIndex = 10;
-            // 
-            // txtTurno
-            // 
-            this.txtTurno.Location = new System.Drawing.Point(123, 92);
-            this.txtTurno.Name = "txtTurno";
-            this.txtTurno.Size = new System.Drawing.Size(171, 23);
-            this.txtTurno.TabIndex = 11;
-            // 
-            // txtSetor
-            // 
-            this.txtSetor.Location = new System.Drawing.Point(123, 52);
-            this.txtSetor.Name = "txtSetor";
-            this.txtSetor.Size = new System.Drawing.Size(171, 23);
-            this.txtSetor.TabIndex = 12;
-            // 
-            // txtCargo
-            // 
-            this.txtCargo.Location = new System.Drawing.Point(123, 12);
-            this.txtCargo.Name = "txtCargo";
-            this.txtCargo.Size = new System.Drawing.Size(171, 23);
-            this.txtCargo.TabIndex = 13;
-            // 
-            // txtCidade
-            // 
-            this.txtCidade.Location = new System.Drawing.Point(472, 52);
-            this.txtCidade.Name = "txtCidade";
-            this.txtCidade.Size = new System.Drawing.Size(106, 23);
-            this.txtCidade.TabIndex = 14;
-            // 
-            // txtNumero
-            // 
-            this.txtNumero.Location = new System.Drawing.Point(472, 9);
-            this.txtNumero.Name = "txtNumero";
-            this.txtNumero.Size = new System.Drawing.Size(162, 23);
-            this.txtNumero.TabIndex = 15;
-            // 
-            // txtLogradouro
-            // 
-            this.txtLogradouro.Location = new System.Drawing.Point(123, 7);
-            this.txtLogradouro.Name = "txtLogradouro";
-            this.txtLogradouro.Size = new System.Drawing.Size(279, 23);
-            this.txtLogradouro.TabIndex = 16;
-            // 
-            // txtBairro
-            // 
-            this.txtBairro.Location = new System.Drawing.Point(265, 52);
-            this.txtBairro.Name = "txtBairro";
-            this.txtBairro.Size = new System.Drawing.Size(137, 23);
-            this.txtBairro.TabIndex = 17;
-            // 
-            // txtUf
-            // 
-            this.txtUf.Location = new System.Drawing.Point(611, 52);
-            this.txtUf.Name = "txtUf";
-            this.txtUf.Size = new System.Drawing.Size(23, 23);
-            this.txtUf.TabIndex = 18;
-            // 
-            // txtPais
-            // 
-            this.txtPais.Location = new System.Drawing.Point(123, 92);
-            this.txtPais.Name = "txtPais";
-            this.txtPais.Size = new System.Drawing.Size(171, 23);
-            this.txtPais.TabIndex = 19;
+            this.btnInserir.Location = new System.Drawing.Point(16, 20);
+            this.btnInserir.Name = "btnInserir";
+            this.btnInserir.Size = new System.Drawing.Size(75, 23);
+            this.btnInserir.TabIndex = 0;
+            this.btnInserir.Text = "Cadastrar";
+            this.btnInserir.UseVisualStyleBackColor = true;
+            this.btnInserir.Click += new System.EventHandler(this.btnInserir_Click);
             // 
             // FormCadastroUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            this.ClientSize = new System.Drawing.Size(695, 471);
+            this.ClientSize = new System.Drawing.Size(695, 694);
             this.Controls.Add(this.pnlContainer);
             this.Controls.Add(this.btnFechar);
             this.MinimumSize = new System.Drawing.Size(711, 510);
@@ -541,6 +560,7 @@
             this.pnlPJ.ResumeLayout(false);
             this.pnlPJ.PerformLayout();
             this.pnlContainer.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -592,5 +612,7 @@
         private System.Windows.Forms.MaskedTextBox mskCnpj;
         private System.Windows.Forms.TextBox txtPais;
         private System.Windows.Forms.TextBox txtUf;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button btnInserir;
     }
 }

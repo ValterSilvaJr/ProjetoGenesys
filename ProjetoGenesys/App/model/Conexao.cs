@@ -1,4 +1,5 @@
 ﻿using System.Data.SqlClient;
+using System.Runtime.Remoting.Messaging;
 
 namespace ProjetoGenesys.App.model
 {

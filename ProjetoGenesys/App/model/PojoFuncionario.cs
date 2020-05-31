@@ -1,6 +1,6 @@
 ﻿namespace ProjetoGenesys.App.model
 {
-    class PojoFuncionario : PojoUsuario
+    public class PojoFuncionario : PojoCliente
     {
         private string cargo;
         private string setor;

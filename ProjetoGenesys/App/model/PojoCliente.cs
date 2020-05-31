@@ -1,6 +1,6 @@
 ﻿namespace ProjetoGenesys.App.model
 {
-    class PojoCliente : PojoUsuario
+    public class PojoCliente
     {
         private string tipo;
 
@@ -13,7 +13,8 @@
             this.tipo = tipo;
         }
     }
-    class PojoPessoaFisica : PojoCliente
+
+    public class PojoPessoaFisica : PojoCliente
     {
         private string cpf;
         private string dataNasc;
@@ -35,7 +36,7 @@
             this.dataNasc = dataNasc;
         }
     }
-    class PojoPessoaJuridica : PojoCliente
+    public class PojoPessoaJuridica : PojoCliente
     {
         private string cnpj;
         private string inscricao_estadual;

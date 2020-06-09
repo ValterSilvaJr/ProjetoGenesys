@@ -67,7 +67,7 @@ namespace ProjetoGenesys.App.view
             pojoFunc.setTurno(txtTurno.Text);
             #endregion
             */
-            response = usuarioDao.CadastrarUsuario(pojoUsuario, pojoPf, pojoPj, pojoFunc);
+            response = usuarioDao.CadastrarUsuario(pojoUsuario, pojoPf);
 
             if(response == 1)
             {
@@ -75,7 +75,7 @@ namespace ProjetoGenesys.App.view
             }
             else
             {
-                MessageBox.Show("Erro ao cadastrar dados: Delta-" + response, "Projeto Genesys", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Erro ao cadastrar dados", "Projeto Genesys", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
     }

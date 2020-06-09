@@ -8,21 +8,20 @@ namespace ProjetoGenesys.App.model
     {
         SqlConnection sqlConnection = Conexao.SqlServer.getConnection();
 
-        public int CadastrarUsuario(PojoUsuario pojoUsuario, PojoPessoaFisica pojoPf, PojoPessoaJuridica pojoPj, PojoFuncionario pojoFunc)
+        public int CadastrarUsuario(PojoUsuario pojoUsuario, PojoPessoaFisica pojoPf)
         {
-            string sqlQuery = "INSERT INTO usuario VALUES("
-                + "nome, email, senha)";/*
-                + "cargo, setor, turno,"
-                + "cpf, dataNasc,"
-                + "cnpj, inscricao_estadual, razao_social, nome_fantasia,"
-                + "logradouro, numero, cep, bairro, cidade, uf, pais,"
-                + "tipo"
-                + ")";*/
+            string sqlTransaction =
+                "BEGIN TRANSACTION "
+                + "INSERT INTO usuario(nome, email, senha) values(@nome, @email, @senha) "
+                + "INSERT INTO endereco(id_usuario ,logradouro, numero, cep, bairro, cidade, uf, pais) values(@@IDENTITY, @logradouro, @numero, @cep, @bairro, @cidade, @uf, @pais) "
+                + "INSERT INTO cliente(id_usuario, tipo) values(@@IDENTITY, @tipo) "
+                + "INSERT INTO pessoa_fisica(cpf, id_cliente, dataNasc) values(@cpf, @@IDENTITY, @dataNasc) "
+                + "COMMIT";
 
             try
             {
                 sqlConnection.Open();
-                SqlCommand sqlCommand = new SqlCommand(sqlQuery, sqlConnection);
+                SqlCommand sqlCommand = new SqlCommand(sqlTransaction, sqlConnection);
 
                 #region PojoUsuario
                 sqlCommand.Parameters.Add(new SqlParameter("@nome", pojoUsuario.getNome()));
@@ -42,15 +41,16 @@ namespace ProjetoGenesys.App.model
                 sqlCommand.Parameters.Add(new SqlParameter("@setor", pojoFunc.getSetor()));
                 sqlCommand.Parameters.Add(new SqlParameter("@turno", pojoFunc.getTurno()));
                 //sqlCommand.Parameters.Add(new SqlParameter("@tipo", pojoFunc.getTipo()));
-
                 #endregion
+                */
 
                 #region PojoPessoaFisica
                 sqlCommand.Parameters.Add(new SqlParameter("@cpf", pojoPf.getCpf()));
-                sqlCommand.Parameters.Add(new SqlParameter("@dataNasc", pojoPf.getDataNasc()));
-                sqlCommand.Parameters.Add(new SqlParameter("@tipo", pojoPj.getTipo()));
+                sqlCommand.Parameters.Add(new SqlParameter("@dataNasc", Convert.ToDateTime(pojoPf.getDataNasc())));
+                sqlCommand.Parameters.Add(new SqlParameter("@tipo", pojoPf.getTipo()));
                 #endregion
 
+                /*
                 #region PojoPessoaJuridica
                 sqlCommand.Parameters.Add(new SqlParameter("@cnpj", pojoPj.getCnpj()));
                 sqlCommand.Parameters.Add(new SqlParameter("@inscricao_estadual", pojoPj.getInscricaoEstadual()));
@@ -63,9 +63,9 @@ namespace ProjetoGenesys.App.model
 
                 return 1;
             }
-            catch(Exception ex)
+            catch(SqlException ex)
             {
-                MessageBox.Show("Erro ao cadastrar dados: Delta-" + ex, "Projeto Genesys", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Erro ao cadastrar dados: " + ex.Message, "Projeto Genesys", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return 0;
             }
             finally

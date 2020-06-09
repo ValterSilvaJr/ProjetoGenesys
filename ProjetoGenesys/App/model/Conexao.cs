@@ -7,7 +7,7 @@ namespace ProjetoGenesys.App.model
     {
         public class SqlServer
         {
-            static string sqlServer = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=db_genesys;Integrated Security=True;Pooling=False";
+            static string sqlServer = (@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=db_genesys;Integrated Security=True;Pooling=False");
             public static SqlConnection getConnection()
             {
                 SqlConnection conn = new SqlConnection(sqlServer);

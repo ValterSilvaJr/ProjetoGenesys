@@ -5,10 +5,21 @@ select * from CLIENTE
 select * from PESSOA_FISICA
 
 /*Insere dados nas tabelas relacionadas*/
-insert into USUARIO(nome, email, senha) values('Valter','valter@mail.com','12345678');
-insert into ENDERECO(logradouro, numero, cep, bairro, cidade, uf, pais, id_usuario) values('Rua Dois','85B','50882-059','Townsville','Luganenhum','MG','Multiverso', @@IDENTITY);
-insert into CLIENTE(id_usuario, tipo) values(@@IDENTITY, 'PF')
-insert into PESSOA_FISICA(id_cliente,cpf, dataNasc) values( @@IDENTITY,'32145678800','2010-05-25')
+DECLARE @TranName varchar(20);
+SELECT @TranName = 'Inserir Dados PF'
+
+BEGIN TRANSACTION @TranName
+
+	insert into USUARIO(nome, email, senha) values('Roberto','roberto@mail.com','12345678');
+	
+	insert into ENDERECO(id_usuario ,logradouro, numero, cep, bairro, cidade, uf, pais) values(@@IDENTITY,'Rua Três','12B','50882-059','Townsville','Luganenhum','MG','Multiverso');
+	
+	insert into CLIENTE(id_usuario, tipo) values(@@IDENTITY, 'PF')
+	
+	insert into PESSOA_FISICA(cpf,id_cliente, dataNasc) values('13177678800', @@IDENTITY, '2010-05-25')
+	
+COMMIT TRANSACTION @TranName
+	
 
 /*TESTES*/
 select u.nome, e.logradouro, e.numero from USUARIO u
@@ -26,8 +37,15 @@ select * from USUARIO where email like 'v%'
 /*Faz uma busca nas tabelas relacionadas*/
 select u.id_usuario 'ID', c.id_cliente 'ID CLIENTE', e.id_endereco 'ID END', u.nome 'NOME COMPLETO', pf.cpf 'CPF', pf.dataNasc 'IDADE', e.logradouro 'LOGRADOURO', e.numero 'N', e.bairro 'BAIRRO', e.cidade 'CIDADE', e.uf 'ESTADO', e.pais 'PAÍS' from CLIENTE c
 inner join USUARIO u on u.id_usuario = c.id_usuario
-inner join PESSOA_FISICA pf on pf.id_cliente = c.id_cliente
+inner join PESSOA_FISICA pf on pf.id_cliente = c.id_usuario
 inner join ENDERECO e on e.id_usuario = u.id_usuario
+
+/*Filtra os usuários da tabela pelo ID*/
+select u.id_usuario 'ID', c.id_cliente 'ID CLIENTE', e.id_endereco 'ID END', u.nome 'NOME COMPLETO', pf.cpf 'CPF', pf.dataNasc 'IDADE', e.logradouro 'LOGRADOURO', e.numero 'N', e.bairro 'BAIRRO', e.cidade 'CIDADE', e.uf 'ESTADO', e.pais 'PAÍS' from CLIENTE c
+inner join USUARIO u on u.id_usuario = c.id_usuario
+inner join PESSOA_FISICA pf on pf.id_cliente = c.id_usuario
+inner join ENDERECO e on e.id_usuario = u.id_usuario
+where u.id_usuario = 1
 
 /*Comando para resetar a tabela*/
 dbcc checkident (usuario, reseed, 0) 

@@ -118,11 +118,11 @@ namespace ProjetoGenesys.App.view
 
                     if (response == 1)
                     {
-                        MessageBox.Show(MessageSender.Positive.getMessage("sucessoCadastrarDados"), "Projeto Genesys", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show(MessageSender.Positive.getMessage("sucessoCadastrar"), "Projeto Genesys", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {
-                        MessageBox.Show(MessageSender.Negative.getMessage("erroCadastrarDados"), "Projeto Genesys", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show(MessageSender.Negative.getMessage("erroCadastrar"), "Projeto Genesys", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
 
                     break;

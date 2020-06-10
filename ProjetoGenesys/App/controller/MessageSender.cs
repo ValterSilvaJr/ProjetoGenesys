@@ -8,7 +8,7 @@
             {
                 switch (message)
                 {
-                    case "erroCadastrarDados":
+                    case "erroCadastrar":
                         message = "Erro ao cadastrar os Dados";
                         break;
                 }
@@ -22,7 +22,7 @@
             {
                 switch (message)
                 {
-                    case "sucessoCadastrarDados":
+                    case "sucessoCadastrar":
                         message = "Cadastro realizado com sucesso!";
                         break;
                 }

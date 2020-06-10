@@ -61,6 +61,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App\controller\MessageSender.cs" />
     <Compile Include="App\model\Conexao.cs" />
     <Compile Include="App\model\PojoCliente.cs" />
     <Compile Include="App\model\PojoFuncionario.cs" />
@@ -142,8 +143,6 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App\controller\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

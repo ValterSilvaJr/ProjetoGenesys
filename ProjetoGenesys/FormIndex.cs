@@ -62,17 +62,23 @@ namespace ProjetoGenesys
 
         private void btnPessoaFisica_Click(object sender, EventArgs e)
         {
-            AbrirChildForm(new FormCadastroUsuario());
+            string tipoUsuario = "PF";
+            AbrirChildForm(new FormCadastroUsuario(tipoUsuario));
             EsconderSubmenu();
+            
         }
 
         private void btnPessoaJuridica_Click(object sender, EventArgs e)
         {
+            string tipoUsuario = "PJ";
+            AbrirChildForm(new FormCadastroUsuario(tipoUsuario));
             EsconderSubmenu();
         }
 
         private void btnFuncionario_Click(object sender, EventArgs e)
         {
+            string tipoUsuario = "FCN";
+            AbrirChildForm(new FormCadastroUsuario(tipoUsuario));
             EsconderSubmenu();
         }
 #endregion

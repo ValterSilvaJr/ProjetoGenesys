@@ -14,11 +14,69 @@ namespace ProjetoGenesys.App.view
         UsuarioDao usuarioDao;
         int response;
 
-        public FormCadastroUsuario()
+        public FormCadastroUsuario(string tipoUsuario)
         {
             InitializeComponent();
-        }
+            CustomizarAparencia();
 
+            // O formulário recebe um parâmetro com o tipo de usuário que será inserido no sistema e exibe o painél especializado
+            switch (tipoUsuario)
+            {
+                case "PF":
+                    ExibirPainelEspecializacao(pnlPF);
+                    break;
+                case "PJ":
+                    ExibirPainelEspecializacao(pnlPJ);
+                    break;
+                case "FCN":
+                    ExibirPainelEspecializacao(pnlCargo);
+                    break;
+            }
+            
+        }
+        #region Lógica de ocultar Painéis
+
+        private void CustomizarAparencia()
+        {
+            /*  Inicialmente todos os painéis são setados para ter a visibilidade
+             *  false através deste método que é carregado junto com o form atual
+             */
+            pnlPF.Visible = false;
+            pnlPJ.Visible = false;
+            pnlCargo.Visible = false;
+        }
+        private void EsconderPainelEspecializacao()
+        {
+            
+            //É verificado se os painés estão visíveis e caso seja true, os mesmos são setados para false
+             
+            if (pnlPF.Visible)
+            {
+                pnlPF.Visible = false;
+            }
+            if (pnlCargo.Visible)
+            {
+                pnlCargo.Visible = false;
+            }
+            if (pnlPJ.Visible)
+            {
+                pnlPJ.Visible = false;
+            }
+        }
+        private void ExibirPainelEspecializacao(Panel especializacaoPanel)
+        {
+            //É passado como parâmetro o painel que ficará visível através deste método, deixando todos os demais invisíveis.
+            if (especializacaoPanel.Visible == false)
+            {
+                EsconderPainelEspecializacao();
+                especializacaoPanel.Visible = true;
+            }
+            else
+            {
+                especializacaoPanel.Visible = false;
+            }
+        }
+        #endregion
         private void btnFechar_Click(object sender, EventArgs e)
         {
             Close();

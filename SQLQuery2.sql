@@ -3,6 +3,8 @@ select * from USUARIO
 select * from ENDERECO
 select * from CLIENTE
 select * from PESSOA_FISICA
+select * from PESSOA_JURIDICA
+select * from FUNCIONARIO
 
 /*Insere dados nas tabelas relacionadas*/
 DECLARE @TranName varchar(20);
@@ -51,6 +53,7 @@ where u.id_usuario = 1
 dbcc checkident (usuario, reseed, 0) 
 dbcc checkident (endereco, reseed, 0)
 dbcc checkident (cliente, reseed, 0)
+dbcc checkident (funcionario, reseed, 0)
 
 /*Comando para exibir o id atual da tabela*/
 select IDENT_CURRENT('USUARIO') 

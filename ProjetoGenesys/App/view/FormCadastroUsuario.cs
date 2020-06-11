@@ -12,9 +12,9 @@ namespace ProjetoGenesys.App.view
         PojoUsuario pojoUsuario;
         PojoPessoaFisica pojoPf;
         PojoPessoaJuridica pojoPj;
-        PojoFuncionario pojoFunc;
+        PojoFuncionario pojoFcn;
         UsuarioDao usuarioDao;
-        string inserirUsuario;
+        string tipoUsuario;
         int response;
 
         public FormCadastroUsuario(string tipoUsuario)
@@ -73,7 +73,7 @@ namespace ProjetoGenesys.App.view
             {
                 EsconderPainelEspecializacao();
                 especializacaoPanel.Visible = true;
-                inserirUsuario = tipo;
+                tipoUsuario = tipo;
             }
             else
             {
@@ -88,59 +88,8 @@ namespace ProjetoGenesys.App.view
              
         private void btnInserir_Click(object sender, EventArgs e)
         {
-
-            switch (inserirUsuario)
-            {
-                case "PF":
-                    usuarioDao = new UsuarioDao();
-                    #region PojoUsuario
-                    pojoUsuario = new PojoUsuario();
-                    pojoUsuario.setNome(txtNome.Text);
-                    pojoUsuario.setEmail(txtEmail.Text);
-                    pojoUsuario.setSenha(mskSenha.Text);
-                    pojoUsuario.setLogradouro(txtLogradouro.Text);
-                    pojoUsuario.setNumero(txtNumero.Text);
-                    pojoUsuario.setCep(mskCep.Text);
-                    pojoUsuario.setBairro(txtBairro.Text);
-                    pojoUsuario.setCidade(txtCidade.Text);
-                    pojoUsuario.setUf(txtUf.Text);
-                    pojoUsuario.setPais(txtPais.Text);
-                    #endregion
-
-                    #region PojoPessoaFisica
-                    pojoPf = new PojoPessoaFisica();
-                    pojoPf.setCpf(mskCpf.Text);
-                    pojoPf.setDataNasc(mskDataNasc.Text);
-                    pojoPf.setTipo(inserirUsuario);
-                    #endregion
-
-                    response = usuarioDao.CadastrarUsuario(pojoUsuario, pojoPf);
-
-                    if (response == 1)
-                    {
-                        MessageBox.Show(MessageSender.Positive.getMessage("sucessoCadastrar"), "Projeto Genesys", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else
-                    {
-                        MessageBox.Show(MessageSender.Negative.getMessage("erroCadastrar"), "Projeto Genesys", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-
-                    break;
-
-                case "PJ":
-                    MessageBox.Show("PJ", "GENESYS", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    break;
-                case "FCN":
-                    MessageBox.Show("FCN", "GENESYS", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    break;
-                default:
-                    
-                    break;
-            }
- 
-            /*
             usuarioDao = new UsuarioDao();
-
+            
             #region PojoUsuario
             pojoUsuario = new PojoUsuario();
             pojoUsuario.setNome(txtNome.Text);
@@ -155,44 +104,47 @@ namespace ProjetoGenesys.App.view
             pojoUsuario.setPais(txtPais.Text);
             #endregion
 
-            #region PojoPessoaFisica
-            const string tipoPf = "PF";
-            pojoPf = new PojoPessoaFisica();
-            pojoPf.setCpf(mskCpf.Text);
-            pojoPf.setDataNasc(mskDataNasc.Text);
-            pojoPf.setTipo(tipoPf);
-            #endregion
-            /*
-            #region PojoPessoaJuridica
-            const string tipoPj = "PJ";
-            pojoPj = new PojoPessoaJuridica();
-            pojoPj.setCnpj(mskCnpj.Text);
-            pojoPj.setInscricaoEstadual(mskInscEst.Text);
-            pojoPj.setRazaoSocial(txtRazaoSocial.Text);
-            pojoPj.setNomeFantasia(txtNomeFantasia.Text);
-            pojoPj.setTipo(tipoPj);
-            #endregion
-
-            #region PojoFuncionario
-            pojoFunc = new PojoFuncionario();
-            pojoFunc.setCargo(txtCargo.Text);
-            pojoFunc.setSetor(txtSetor.Text);
-            pojoFunc.setTurno(txtTurno.Text);
-            #endregion
-
-            
-            
-            response = usuarioDao.CadastrarUsuario(pojoUsuario, pojoPf);
-
-            if(response == 1)
+            switch (tipoUsuario)
             {
-                MessageBox.Show("Cadastro realizado com sucesso!", "Projeto Genesys", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                case "PF":
+                    #region PojoPessoaFisica
+                    pojoPf = new PojoPessoaFisica();
+                    pojoPf.setCpf(mskCpf.Text);
+                    pojoPf.setDataNasc(mskDataNasc.Text);
+                    pojoPf.setTipo(tipoUsuario);
+                    #endregion
+                    break;
+
+                case "PJ":
+                    #region PojoPessoaJuridica
+                    pojoPj = new PojoPessoaJuridica();
+                    pojoPj.setCnpj(mskCnpj.Text);
+                    pojoPj.setInscricaoEstadual(mskInscEst.Text);
+                    pojoPj.setRazaoSocial(txtRazaoSocial.Text);
+                    pojoPj.setNomeFantasia(txtNomeFantasia.Text);
+                    pojoPj.setTipo(tipoUsuario);
+                    #endregion
+                    break;
+                case "FCN":
+                    #region PojoFuncionario
+                    pojoFcn = new PojoFuncionario();
+                    pojoFcn.setCargo(txtCargo.Text);
+                    pojoFcn.setSetor(txtSetor.Text);
+                    pojoFcn.setTurno(txtTurno.Text);
+                    #endregion
+                    break;
+            }
+
+            response = usuarioDao.CadastrarUsuario(pojoUsuario, pojoPf, pojoPj, pojoFcn, tipoUsuario);
+
+            if (response == 1)
+            {
+                MessageBox.Show(MessageSender.Positive.getMessage("sucessoCadastrar"), "Projeto Genesys", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                MessageBox.Show("Erro ao cadastrar dados", "Projeto Genesys", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(MessageSender.Negative.getMessage("erroCadastrar"), "Projeto Genesys", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            */
         }
     }
 }

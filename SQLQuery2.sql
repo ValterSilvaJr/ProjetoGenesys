@@ -21,7 +21,6 @@ BEGIN TRANSACTION @TranName
 	insert into PESSOA_FISICA(cpf,id_cliente, dataNasc) values('13177678800', @@IDENTITY, '2010-05-25')
 	
 COMMIT TRANSACTION @TranName
-	
 
 /*TESTES*/
 select u.nome, e.logradouro, e.numero from USUARIO u
@@ -35,6 +34,10 @@ select u.id_usuario, u.nome, e.logradouro, e.numero from ENDERECO e
 inner join USUARIO u on e.id_usuario = u.id_usuario
 
 select * from USUARIO where email like 'v%'
+
+SELECT u.id_usuario, u.nome, u.email, c.tipo FROM USUARIO u
+INNER JOIN CLIENTE c on u.id_usuario = c.id_usuario
+where u.id_usuario = 4;
 
 /*Faz uma busca nas tabelas relacionadas*/
 select u.id_usuario 'ID', c.id_cliente 'ID CLIENTE', e.id_endereco 'ID END', u.nome 'NOME COMPLETO', pf.cpf 'CPF', pf.dataNasc 'IDADE', e.logradouro 'LOGRADOURO', e.numero 'N', e.bairro 'BAIRRO', e.cidade 'CIDADE', e.uf 'ESTADO', e.pais 'PAÍS' from CLIENTE c

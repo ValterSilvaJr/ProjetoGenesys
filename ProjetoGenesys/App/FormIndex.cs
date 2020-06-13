@@ -130,6 +130,7 @@ namespace ProjetoGenesys
         }
         private void btnConsultarUsuarios_Click(object sender, EventArgs e)
         {
+            AbrirChildForm(new FormBuscarUsuario());
             EsconderSubmenu();
         }
 

@@ -124,6 +124,9 @@
     <EmbeddedResource Include="App\FormIndex.resx">
       <DependentUpon>FormIndex.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="App\view\FormUsuario\FormDetalhesUsuario.resx">
+      <DependentUpon>FormDetalhesUsuario.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

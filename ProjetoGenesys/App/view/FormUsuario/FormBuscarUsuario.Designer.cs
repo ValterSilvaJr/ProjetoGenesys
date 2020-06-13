@@ -29,60 +29,77 @@
         private void InitializeComponent()
         {
             this.dgvBuscarUsuario = new System.Windows.Forms.DataGridView();
-            this.dgvId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvNome = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvTipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvDetalhes = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.dtrId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dtrNome = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dtrEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dtrTipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dtrBtnDetalhes = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBuscarUsuario)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvBuscarUsuario
             // 
             this.dgvBuscarUsuario.AllowUserToAddRows = false;
+            this.dgvBuscarUsuario.AllowUserToDeleteRows = false;
             this.dgvBuscarUsuario.AllowUserToOrderColumns = true;
             this.dgvBuscarUsuario.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvBuscarUsuario.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dgvId,
-            this.dgvNome,
-            this.dgvEmail,
-            this.dgvTipo,
-            this.dgvDetalhes});
+            this.dtrId,
+            this.dtrNome,
+            this.dtrEmail,
+            this.dtrTipo,
+            this.dtrBtnDetalhes});
             this.dgvBuscarUsuario.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvBuscarUsuario.Location = new System.Drawing.Point(0, 0);
             this.dgvBuscarUsuario.Name = "dgvBuscarUsuario";
+            this.dgvBuscarUsuario.ReadOnly = true;
             this.dgvBuscarUsuario.Size = new System.Drawing.Size(695, 471);
             this.dgvBuscarUsuario.TabIndex = 0;
+            this.dgvBuscarUsuario.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBuscarUsuario_CellContentClick);
             // 
-            // dgvId
+            // dtrId
             // 
-            this.dgvId.HeaderText = "Id";
-            this.dgvId.Name = "dgvId";
-            this.dgvId.ReadOnly = true;
+            this.dtrId.DataPropertyName = "id_usuario";
+            this.dtrId.Frozen = true;
+            this.dtrId.HeaderText = "Id";
+            this.dtrId.Name = "dtrId";
+            this.dtrId.ReadOnly = true;
             // 
-            // dgvNome
+            // dtrNome
             // 
-            this.dgvNome.HeaderText = "Nome";
-            this.dgvNome.Name = "dgvNome";
-            this.dgvNome.ReadOnly = true;
+            this.dtrNome.DataPropertyName = "nome";
+            this.dtrNome.Frozen = true;
+            this.dtrNome.HeaderText = "Nome";
+            this.dtrNome.Name = "dtrNome";
+            this.dtrNome.ReadOnly = true;
             // 
-            // dgvEmail
+            // dtrEmail
             // 
-            this.dgvEmail.HeaderText = "Email";
-            this.dgvEmail.Name = "dgvEmail";
-            this.dgvEmail.ReadOnly = true;
+            this.dtrEmail.DataPropertyName = "email";
+            this.dtrEmail.Frozen = true;
+            this.dtrEmail.HeaderText = "Email";
+            this.dtrEmail.Name = "dtrEmail";
+            this.dtrEmail.ReadOnly = true;
             // 
-            // dgvTipo
+            // dtrTipo
             // 
-            this.dgvTipo.HeaderText = "Tipo";
-            this.dgvTipo.Name = "dgvTipo";
-            this.dgvTipo.ReadOnly = true;
+            this.dtrTipo.DataPropertyName = "tipo";
+            this.dtrTipo.Frozen = true;
+            this.dtrTipo.HeaderText = "Tipo";
+            this.dtrTipo.Name = "dtrTipo";
+            this.dtrTipo.ReadOnly = true;
             // 
-            // dgvDetalhes
+            // dtrBtnDetalhes
             // 
-            this.dgvDetalhes.HeaderText = "Detalhes";
-            this.dgvDetalhes.Name = "dgvDetalhes";
-            this.dgvDetalhes.ReadOnly = true;
+            this.dtrBtnDetalhes.DataPropertyName = "id_usuario";
+            this.dtrBtnDetalhes.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.dtrBtnDetalhes.HeaderText = "";
+            this.dtrBtnDetalhes.MinimumWidth = 70;
+            this.dtrBtnDetalhes.Name = "dtrBtnDetalhes";
+            this.dtrBtnDetalhes.ReadOnly = true;
+            this.dtrBtnDetalhes.Text = "Detalhes";
+            this.dtrBtnDetalhes.UseColumnTextForButtonValue = true;
+            this.dtrBtnDetalhes.Width = 70;
             // 
             // FormBuscarUsuario
             // 
@@ -93,6 +110,7 @@
             this.MinimumSize = new System.Drawing.Size(711, 510);
             this.Name = "FormBuscarUsuario";
             this.Text = "Exibir Usuarios";
+            this.Load += new System.EventHandler(this.FormBuscarUsuario_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvBuscarUsuario)).EndInit();
             this.ResumeLayout(false);
 
@@ -101,10 +119,10 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dgvBuscarUsuario;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvNome;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvEmail;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvTipo;
-        private System.Windows.Forms.DataGridViewButtonColumn dgvDetalhes;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dtrId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dtrNome;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dtrEmail;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dtrTipo;
+        private System.Windows.Forms.DataGridViewButtonColumn dtrBtnDetalhes;
     }
 }

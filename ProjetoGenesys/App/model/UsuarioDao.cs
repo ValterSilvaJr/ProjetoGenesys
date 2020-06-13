@@ -1,5 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
+using System.Security.Cryptography.X509Certificates;
 using System.Windows.Forms;
 
 namespace ProjetoGenesys.App.model
@@ -11,7 +15,6 @@ namespace ProjetoGenesys.App.model
 
         public int CadastrarUsuario(PojoUsuario pojoUsuario, PojoPessoaFisica pojoPf, PojoPessoaJuridica pojoPj, PojoFuncionario pojoFcn, string tipoUsuario)
         {
-            
             switch (tipoUsuario)
             {
                 case "PF":
@@ -86,6 +89,44 @@ namespace ProjetoGenesys.App.model
             {
                 MessageBox.Show("Erro ao cadastrar dados: " + ex.Message, "Projeto Genesys", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return 0;
+            }
+            finally
+            {
+                if(sqlConnection != null)
+                {
+                    sqlConnection.Close();
+                }
+            }
+        }
+        public bool BuscarUsuario(DataGridView dgvUsuarios)
+        {
+            string sqlQueryUsuarios = "SELECT u.id_usuario, u.nome, u.email, c.tipo FROM USUARIO u " +
+                              "INNER JOIN CLIENTE c on u.id_usuario = c.id_usuario";
+
+            string sqlQueryDetalhes = "SELECT u.nome, u.email FROM USUARIO u " +
+                              "WHERE u.id_usuario = " + dgvUsuarios.Columns[0].Name;
+
+
+            try
+            {
+                sqlConnection.Open();
+                SqlCommand sqlCommand = new SqlCommand(sqlQueryUsuarios, sqlConnection);
+                
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
+                DataTable dataTable = new DataTable();
+                sqlDataAdapter.Fill(dataTable);
+                dgvUsuarios.DataSource = dataTable;
+
+                dgvUsuarios.RowsDefaultCellStyle.BackColor = Color.White;
+                dgvUsuarios.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
+
+                return true;
+
+            }
+            catch(SqlException ex)
+            {
+                MessageBox.Show("Erro ao consultar os dados" + ex.Message, "Projeto Genesys", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return false;
             }
             finally
             {

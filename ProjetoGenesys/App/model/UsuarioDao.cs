@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Windows.Forms;
 
@@ -98,20 +99,16 @@ namespace ProjetoGenesys.App.model
                 }
             }
         }
-        public bool BuscarUsuario(DataGridView dgvUsuarios)
+        public bool ListarUsuarios(DataGridView dgvUsuarios)
         {
             string sqlQueryUsuarios = "SELECT u.id_usuario, u.nome, u.email, c.tipo FROM USUARIO u " +
                               "INNER JOIN CLIENTE c on u.id_usuario = c.id_usuario";
 
-            string sqlQueryDetalhes = "SELECT u.nome, u.email FROM USUARIO u " +
-                              "WHERE u.id_usuario = " + dgvUsuarios.Columns[0].Name;
-
-
             try
             {
                 sqlConnection.Open();
+
                 SqlCommand sqlCommand = new SqlCommand(sqlQueryUsuarios, sqlConnection);
-                
                 SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
                 DataTable dataTable = new DataTable();
                 sqlDataAdapter.Fill(dataTable);
@@ -131,6 +128,41 @@ namespace ProjetoGenesys.App.model
             finally
             {
                 if(sqlConnection != null)
+                {
+                    sqlConnection.Close();
+                }
+            }
+        }
+        public bool ListarDetalhesUsuario(DataGridView dgvUsuarioDetalhes, string idUsuario)
+        {
+
+            string sqlQueryDetalhes = "SELECT u.nome, u.email FROM USUARIO u " +
+                                      "WHERE u.id_usuario =" + idUsuario;
+
+            try
+            {
+                sqlConnection.Open();
+
+                SqlCommand sqlCommand = new SqlCommand(sqlQueryDetalhes, sqlConnection);
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
+                DataTable dataTable = new DataTable();
+                sqlDataAdapter.Fill(dataTable);
+                dgvUsuarioDetalhes.DataSource = dataTable;
+
+                dgvUsuarioDetalhes.RowsDefaultCellStyle.BackColor = Color.White;
+                dgvUsuarioDetalhes.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
+
+                return true;
+
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Erro ao consultar os dados" + ex.Message, "Projeto Genesys", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return false;
+            }
+            finally
+            {
+                if (sqlConnection != null)
                 {
                     sqlConnection.Close();
                 }

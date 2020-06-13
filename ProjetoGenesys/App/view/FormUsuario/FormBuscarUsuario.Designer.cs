@@ -92,13 +92,11 @@
             // dtrBtnDetalhes
             // 
             this.dtrBtnDetalhes.DataPropertyName = "id_usuario";
-            this.dtrBtnDetalhes.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.dtrBtnDetalhes.HeaderText = "";
             this.dtrBtnDetalhes.MinimumWidth = 70;
             this.dtrBtnDetalhes.Name = "dtrBtnDetalhes";
             this.dtrBtnDetalhes.ReadOnly = true;
-            this.dtrBtnDetalhes.Text = "Detalhes";
-            this.dtrBtnDetalhes.UseColumnTextForButtonValue = true;
+            this.dtrBtnDetalhes.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dtrBtnDetalhes.Width = 70;
             // 
             // FormBuscarUsuario

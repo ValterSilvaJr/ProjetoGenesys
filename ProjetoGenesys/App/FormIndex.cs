@@ -25,6 +25,7 @@ namespace ProjetoGenesys
             pnlUsuarioSubmenu.Visible = false;
             pnlVeiculoSubmenu.Visible = false;
             pnlLocacaoSubmenu.Visible = false;
+            pnlGerarRelatorioSubmenu.Visible = false;
         }
         private void EsconderSubmenu()
         {
@@ -39,6 +40,10 @@ namespace ProjetoGenesys
             if (pnlLocacaoSubmenu.Visible)
             {
                 pnlLocacaoSubmenu.Visible = false;
+            }
+            if (pnlGerarRelatorioSubmenu.Visible)
+            {
+                pnlGerarRelatorioSubmenu.Visible = false;
             }
         }
         private void ExibirSubmenu(Panel subMenu)
@@ -116,11 +121,23 @@ namespace ProjetoGenesys
         {
             EsconderSubmenu();
         }
-#endregion
+        #endregion
+
+        #region GerarRelatorioSubmenu
         private void btnGerarRelatorio_Click(object sender, EventArgs e)
+        {
+            ExibirSubmenu(pnlGerarRelatorioSubmenu);
+        }
+        private void btnConsultarUsuarios_Click(object sender, EventArgs e)
         {
             EsconderSubmenu();
         }
+
+        private void btnConsultarVeiculos_Click(object sender, EventArgs e)
+        {
+            EsconderSubmenu();
+        }
+        #endregion
 
         private Form formularioAtivo = null;
         private void AbrirChildForm(Form childForm)
@@ -138,5 +155,7 @@ namespace ProjetoGenesys
             childForm.BringToFront();
             childForm.Show();
         }
+
+        
     }
 }

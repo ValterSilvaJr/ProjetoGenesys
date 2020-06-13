@@ -49,6 +49,9 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.pnlChildForm = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pnlGerarRelatorioSubmenu = new System.Windows.Forms.Panel();
+            this.btnConsultarVeiculos = new System.Windows.Forms.Button();
+            this.btnConsultarUsuarios = new System.Windows.Forms.Button();
             this.pnlSlideMenu.SuspendLayout();
             this.pnlLocacaoSubmenu.SuspendLayout();
             this.pnlVeiculoSubmenu.SuspendLayout();
@@ -57,12 +60,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.pcbLogo)).BeginInit();
             this.pnlChildForm.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.pnlGerarRelatorioSubmenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlSlideMenu
             // 
             this.pnlSlideMenu.AutoScroll = true;
             this.pnlSlideMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(7)))), ((int)(((byte)(17)))));
+            this.pnlSlideMenu.Controls.Add(this.pnlGerarRelatorioSubmenu);
             this.pnlSlideMenu.Controls.Add(this.btnGerarRelatorio);
             this.pnlSlideMenu.Controls.Add(this.pnlLocacaoSubmenu);
             this.pnlSlideMenu.Controls.Add(this.btnLocacaoVeiculo);
@@ -89,7 +94,7 @@
             this.btnGerarRelatorio.Location = new System.Drawing.Point(0, 500);
             this.btnGerarRelatorio.Name = "btnGerarRelatorio";
             this.btnGerarRelatorio.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnGerarRelatorio.Size = new System.Drawing.Size(250, 45);
+            this.btnGerarRelatorio.Size = new System.Drawing.Size(233, 45);
             this.btnGerarRelatorio.TabIndex = 6;
             this.btnGerarRelatorio.Text = "Gerar Relatorio";
             this.btnGerarRelatorio.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -104,7 +109,7 @@
             this.pnlLocacaoSubmenu.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlLocacaoSubmenu.Location = new System.Drawing.Point(0, 420);
             this.pnlLocacaoSubmenu.Name = "pnlLocacaoSubmenu";
-            this.pnlLocacaoSubmenu.Size = new System.Drawing.Size(250, 80);
+            this.pnlLocacaoSubmenu.Size = new System.Drawing.Size(233, 80);
             this.pnlLocacaoSubmenu.TabIndex = 5;
             // 
             // btnRegistrarDevolucao
@@ -116,7 +121,7 @@
             this.btnRegistrarDevolucao.Location = new System.Drawing.Point(0, 35);
             this.btnRegistrarDevolucao.Name = "btnRegistrarDevolucao";
             this.btnRegistrarDevolucao.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.btnRegistrarDevolucao.Size = new System.Drawing.Size(250, 35);
+            this.btnRegistrarDevolucao.Size = new System.Drawing.Size(233, 35);
             this.btnRegistrarDevolucao.TabIndex = 1;
             this.btnRegistrarDevolucao.Text = "Registrar Devolução";
             this.btnRegistrarDevolucao.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -132,7 +137,7 @@
             this.btnRegistrarLocacao.Location = new System.Drawing.Point(0, 0);
             this.btnRegistrarLocacao.Name = "btnRegistrarLocacao";
             this.btnRegistrarLocacao.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.btnRegistrarLocacao.Size = new System.Drawing.Size(250, 35);
+            this.btnRegistrarLocacao.Size = new System.Drawing.Size(233, 35);
             this.btnRegistrarLocacao.TabIndex = 0;
             this.btnRegistrarLocacao.Text = "Registrar Locação";
             this.btnRegistrarLocacao.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -150,7 +155,7 @@
             this.btnLocacaoVeiculo.Location = new System.Drawing.Point(0, 375);
             this.btnLocacaoVeiculo.Name = "btnLocacaoVeiculo";
             this.btnLocacaoVeiculo.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnLocacaoVeiculo.Size = new System.Drawing.Size(250, 45);
+            this.btnLocacaoVeiculo.Size = new System.Drawing.Size(233, 45);
             this.btnLocacaoVeiculo.TabIndex = 4;
             this.btnLocacaoVeiculo.Text = "Locação de Veículo";
             this.btnLocacaoVeiculo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -165,7 +170,7 @@
             this.pnlVeiculoSubmenu.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlVeiculoSubmenu.Location = new System.Drawing.Point(0, 299);
             this.pnlVeiculoSubmenu.Name = "pnlVeiculoSubmenu";
-            this.pnlVeiculoSubmenu.Size = new System.Drawing.Size(250, 76);
+            this.pnlVeiculoSubmenu.Size = new System.Drawing.Size(233, 76);
             this.pnlVeiculoSubmenu.TabIndex = 3;
             // 
             // btnVeiculoPesado
@@ -177,7 +182,7 @@
             this.btnVeiculoPesado.Location = new System.Drawing.Point(0, 35);
             this.btnVeiculoPesado.Name = "btnVeiculoPesado";
             this.btnVeiculoPesado.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.btnVeiculoPesado.Size = new System.Drawing.Size(250, 35);
+            this.btnVeiculoPesado.Size = new System.Drawing.Size(233, 35);
             this.btnVeiculoPesado.TabIndex = 1;
             this.btnVeiculoPesado.Text = "Veículo Pesado";
             this.btnVeiculoPesado.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -193,7 +198,7 @@
             this.btnVeiculoLeve.Location = new System.Drawing.Point(0, 0);
             this.btnVeiculoLeve.Name = "btnVeiculoLeve";
             this.btnVeiculoLeve.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.btnVeiculoLeve.Size = new System.Drawing.Size(250, 35);
+            this.btnVeiculoLeve.Size = new System.Drawing.Size(233, 35);
             this.btnVeiculoLeve.TabIndex = 0;
             this.btnVeiculoLeve.Text = "Veículo Leve";
             this.btnVeiculoLeve.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -211,7 +216,7 @@
             this.btnCadastrarVeiculo.Location = new System.Drawing.Point(0, 254);
             this.btnCadastrarVeiculo.Name = "btnCadastrarVeiculo";
             this.btnCadastrarVeiculo.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnCadastrarVeiculo.Size = new System.Drawing.Size(250, 45);
+            this.btnCadastrarVeiculo.Size = new System.Drawing.Size(233, 45);
             this.btnCadastrarVeiculo.TabIndex = 2;
             this.btnCadastrarVeiculo.Text = "Cadastrar Veículo";
             this.btnCadastrarVeiculo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -228,7 +233,7 @@
             this.pnlUsuarioSubmenu.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlUsuarioSubmenu.Location = new System.Drawing.Point(0, 140);
             this.pnlUsuarioSubmenu.Name = "pnlUsuarioSubmenu";
-            this.pnlUsuarioSubmenu.Size = new System.Drawing.Size(250, 114);
+            this.pnlUsuarioSubmenu.Size = new System.Drawing.Size(233, 114);
             this.pnlUsuarioSubmenu.TabIndex = 1;
             // 
             // btnFuncionario
@@ -240,7 +245,7 @@
             this.btnFuncionario.Location = new System.Drawing.Point(0, 70);
             this.btnFuncionario.Name = "btnFuncionario";
             this.btnFuncionario.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.btnFuncionario.Size = new System.Drawing.Size(250, 35);
+            this.btnFuncionario.Size = new System.Drawing.Size(233, 35);
             this.btnFuncionario.TabIndex = 2;
             this.btnFuncionario.Text = "Funcionário";
             this.btnFuncionario.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -256,7 +261,7 @@
             this.btnPessoaJuridica.Location = new System.Drawing.Point(0, 35);
             this.btnPessoaJuridica.Name = "btnPessoaJuridica";
             this.btnPessoaJuridica.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.btnPessoaJuridica.Size = new System.Drawing.Size(250, 35);
+            this.btnPessoaJuridica.Size = new System.Drawing.Size(233, 35);
             this.btnPessoaJuridica.TabIndex = 1;
             this.btnPessoaJuridica.Text = "Pessoa Jurídica";
             this.btnPessoaJuridica.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -274,7 +279,7 @@
             this.btnPessoaFisica.Location = new System.Drawing.Point(0, 0);
             this.btnPessoaFisica.Name = "btnPessoaFisica";
             this.btnPessoaFisica.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.btnPessoaFisica.Size = new System.Drawing.Size(250, 35);
+            this.btnPessoaFisica.Size = new System.Drawing.Size(233, 35);
             this.btnPessoaFisica.TabIndex = 0;
             this.btnPessoaFisica.Text = "Pessoa Física";
             this.btnPessoaFisica.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -293,7 +298,7 @@
             this.btnCadastrarUsuario.Location = new System.Drawing.Point(0, 95);
             this.btnCadastrarUsuario.Name = "btnCadastrarUsuario";
             this.btnCadastrarUsuario.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnCadastrarUsuario.Size = new System.Drawing.Size(250, 45);
+            this.btnCadastrarUsuario.Size = new System.Drawing.Size(233, 45);
             this.btnCadastrarUsuario.TabIndex = 0;
             this.btnCadastrarUsuario.Text = "Cadastrar Usuario";
             this.btnCadastrarUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -307,14 +312,14 @@
             this.pnlLogo.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlLogo.Location = new System.Drawing.Point(0, 0);
             this.pnlLogo.Name = "pnlLogo";
-            this.pnlLogo.Size = new System.Drawing.Size(250, 95);
+            this.pnlLogo.Size = new System.Drawing.Size(233, 95);
             this.pnlLogo.TabIndex = 0;
             // 
             // pcbLogo
             // 
             this.pcbLogo.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pcbLogo.Image = ((System.Drawing.Image)(resources.GetObject("pcbLogo.Image")));
-            this.pcbLogo.Location = new System.Drawing.Point(25, 24);
+            this.pcbLogo.Location = new System.Drawing.Point(16, 24);
             this.pcbLogo.Name = "pcbLogo";
             this.pcbLogo.Size = new System.Drawing.Size(200, 50);
             this.pcbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -351,6 +356,49 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // pnlGerarRelatorioSubmenu
+            // 
+            this.pnlGerarRelatorioSubmenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.pnlGerarRelatorioSubmenu.Controls.Add(this.btnConsultarVeiculos);
+            this.pnlGerarRelatorioSubmenu.Controls.Add(this.btnConsultarUsuarios);
+            this.pnlGerarRelatorioSubmenu.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlGerarRelatorioSubmenu.Location = new System.Drawing.Point(0, 545);
+            this.pnlGerarRelatorioSubmenu.Name = "pnlGerarRelatorioSubmenu";
+            this.pnlGerarRelatorioSubmenu.Size = new System.Drawing.Size(233, 80);
+            this.pnlGerarRelatorioSubmenu.TabIndex = 7;
+            // 
+            // btnConsultarVeiculos
+            // 
+            this.btnConsultarVeiculos.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnConsultarVeiculos.FlatAppearance.BorderSize = 0;
+            this.btnConsultarVeiculos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnConsultarVeiculos.ForeColor = System.Drawing.Color.LightGray;
+            this.btnConsultarVeiculos.Location = new System.Drawing.Point(0, 35);
+            this.btnConsultarVeiculos.Name = "btnConsultarVeiculos";
+            this.btnConsultarVeiculos.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.btnConsultarVeiculos.Size = new System.Drawing.Size(233, 35);
+            this.btnConsultarVeiculos.TabIndex = 1;
+            this.btnConsultarVeiculos.Text = "Consultar Veiculos";
+            this.btnConsultarVeiculos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnConsultarVeiculos.UseVisualStyleBackColor = true;
+            this.btnConsultarVeiculos.Click += new System.EventHandler(this.btnConsultarVeiculos_Click);
+            // 
+            // btnConsultarUsuarios
+            // 
+            this.btnConsultarUsuarios.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnConsultarUsuarios.FlatAppearance.BorderSize = 0;
+            this.btnConsultarUsuarios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnConsultarUsuarios.ForeColor = System.Drawing.Color.LightGray;
+            this.btnConsultarUsuarios.Location = new System.Drawing.Point(0, 0);
+            this.btnConsultarUsuarios.Name = "btnConsultarUsuarios";
+            this.btnConsultarUsuarios.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.btnConsultarUsuarios.Size = new System.Drawing.Size(233, 35);
+            this.btnConsultarUsuarios.TabIndex = 0;
+            this.btnConsultarUsuarios.Text = "Consultar Usuarios";
+            this.btnConsultarUsuarios.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnConsultarUsuarios.UseVisualStyleBackColor = true;
+            this.btnConsultarUsuarios.Click += new System.EventHandler(this.btnConsultarUsuarios_Click);
+            // 
             // FormIndex
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -376,6 +424,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pcbLogo)).EndInit();
             this.pnlChildForm.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.pnlGerarRelatorioSubmenu.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -402,6 +451,9 @@
         private System.Windows.Forms.Panel pnlChildForm;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pcbLogo;
+        private System.Windows.Forms.Panel pnlGerarRelatorioSubmenu;
+        private System.Windows.Forms.Button btnConsultarVeiculos;
+        private System.Windows.Forms.Button btnConsultarUsuarios;
     }
 }
 

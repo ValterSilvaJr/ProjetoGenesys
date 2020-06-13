@@ -68,22 +68,34 @@
     <Compile Include="App\model\PojoUsuario.cs" />
     <Compile Include="App\model\PojoVeiculo.cs" />
     <Compile Include="App\model\UsuarioDao.cs" />
-    <Compile Include="App\view\FormCadastroUsuario.cs">
+    <Compile Include="App\view\FormUsuario\FormBuscarUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="App\view\FormCadastroUsuario.Designer.cs">
+    <Compile Include="App\view\FormUsuario\FormBuscarUsuario.Designer.cs">
+      <DependentUpon>FormBuscarUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App\view\FormUsuario\FormCadastroUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="App\view\FormUsuario\FormCadastroUsuario.Designer.cs">
       <DependentUpon>FormCadastroUsuario.cs</DependentUpon>
     </Compile>
-    <Compile Include="App\view\FormCadastroVeiculo.cs">
+    <Compile Include="App\view\FormVeiculo\FormCadastroVeiculo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="App\view\FormCadastroVeiculo.Designer.cs">
+    <Compile Include="App\view\FormVeiculo\FormCadastroVeiculo.Designer.cs">
       <DependentUpon>FormCadastroVeiculo.cs</DependentUpon>
     </Compile>
-    <Compile Include="App\view\FormLocacao.cs">
+    <Compile Include="App\view\FormUsuario\FormDetalhesUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="App\view\FormLocacao.Designer.cs">
+    <Compile Include="App\view\FormUsuario\FormDetalhesUsuario.Designer.cs">
+      <DependentUpon>FormDetalhesUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="App\view\FormLocacao\FormLocacao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="App\view\FormLocacao\FormLocacao.Designer.cs">
       <DependentUpon>FormLocacao.cs</DependentUpon>
     </Compile>
     <Compile Include="App\view\FormLogin.cs">
@@ -92,21 +104,24 @@
     <Compile Include="App\view\FormLogin.Designer.cs">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormIndex.cs">
+    <Compile Include="App\FormIndex.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormIndex.Designer.cs">
+    <Compile Include="App\FormIndex.Designer.cs">
       <DependentUpon>FormIndex.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="App\view\FormCadastroUsuario.resx">
+    <EmbeddedResource Include="App\view\FormUsuario\FormBuscarUsuario.resx">
+      <DependentUpon>FormBuscarUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App\view\FormUsuario\FormCadastroUsuario.resx">
       <DependentUpon>FormCadastroUsuario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="App\view\FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormIndex.resx">
+    <EmbeddedResource Include="App\FormIndex.resx">
       <DependentUpon>FormIndex.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

@@ -10,6 +10,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ProjetoGenesys.App.controller;
 using ProjetoGenesys.App.model;
 
 namespace ProjetoGenesys.App.view
@@ -29,15 +30,36 @@ namespace ProjetoGenesys.App.view
 
         private void dgvBuscarUsuario_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            FormDetalhesUsuario formDetalhes;
+            //FormDetalhesUsuario formDetalhes;
             //Comando para pegar o valor da célula clicada
+            string tipoUsuario = dgvBuscarUsuario.CurrentRow.Cells[3].Value.ToString();
             string idUsuario = dgvBuscarUsuario.CurrentRow.Cells[4].Value.ToString();
+            //formDetalhes = new FormDetalhesUsuario(idUsuario, tipoUsuario);
 
             if (e.ColumnIndex == 4)
             {
-                formDetalhes = new FormDetalhesUsuario(idUsuario);
-                formDetalhes.Show();
+                //AbrirChildForm.exibirFormularioChild(new FormDetalhesUsuario(idUsuario, tipoUsuario), pnlChildForm);
+                AbrirChildForm(new FormDetalhesUsuario(idUsuario, tipoUsuario));
             }
         }
+        
+        private Form formularioAtivo = null;
+        private void AbrirChildForm(Form childForm)
+        {
+            if (formularioAtivo != null)
+            {
+                formularioAtivo.Close();
+            }
+            formularioAtivo = childForm;
+            childForm.TopLevel = false;
+            childForm.FormBorderStyle = FormBorderStyle.None;
+            childForm.Dock = DockStyle.Fill;
+            pnlChildForm.Controls.Add(childForm);
+            pnlChildForm.Tag = childForm;
+            childForm.BringToFront();
+            childForm.Show();
+        }
+        
+        
     }
 }

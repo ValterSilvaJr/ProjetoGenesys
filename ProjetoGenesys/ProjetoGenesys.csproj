@@ -61,6 +61,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App\controller\AbrirChildForm.cs" />
     <Compile Include="App\controller\MessageSender.cs" />
     <Compile Include="App\model\Conexao.cs" />
     <Compile Include="App\model\PojoCliente.cs" />

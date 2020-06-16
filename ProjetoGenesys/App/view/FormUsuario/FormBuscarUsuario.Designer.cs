@@ -34,7 +34,9 @@
             this.dtrEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dtrTipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dtrBtnDetalhes = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.pnlChildForm = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBuscarUsuario)).BeginInit();
+            this.pnlChildForm.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvBuscarUsuario
@@ -99,17 +101,28 @@
             this.dtrBtnDetalhes.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dtrBtnDetalhes.Width = 70;
             // 
+            // pnlChildForm
+            // 
+            this.pnlChildForm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            this.pnlChildForm.Controls.Add(this.dgvBuscarUsuario);
+            this.pnlChildForm.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlChildForm.Location = new System.Drawing.Point(0, 0);
+            this.pnlChildForm.Name = "pnlChildForm";
+            this.pnlChildForm.Size = new System.Drawing.Size(695, 471);
+            this.pnlChildForm.TabIndex = 1;
+            // 
             // FormBuscarUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(695, 471);
-            this.Controls.Add(this.dgvBuscarUsuario);
+            this.Controls.Add(this.pnlChildForm);
             this.MinimumSize = new System.Drawing.Size(711, 510);
             this.Name = "FormBuscarUsuario";
             this.Text = "Exibir Usuarios";
             this.Load += new System.EventHandler(this.FormBuscarUsuario_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvBuscarUsuario)).EndInit();
+            this.pnlChildForm.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -122,5 +135,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dtrEmail;
         private System.Windows.Forms.DataGridViewTextBoxColumn dtrTipo;
         private System.Windows.Forms.DataGridViewButtonColumn dtrBtnDetalhes;
+        private System.Windows.Forms.Panel pnlChildForm;
     }
 }

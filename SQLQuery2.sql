@@ -35,8 +35,10 @@ inner join USUARIO u on e.id_usuario = u.id_usuario
 
 select * from USUARIO where email like 'v%'
 
+select nome from usuario where id_usuario=1;
+
 SELECT u.id_usuario, u.nome, u.email, c.tipo FROM USUARIO u
-INNER JOIN CLIENTE c on u.id_usuario = c.id_usuario
+INNER JOIN CLIENTE c on c.id_usuario = u.id_usuario
 where u.id_usuario = 4;
 
 /*Faz uma busca nas tabelas relacionadas*/

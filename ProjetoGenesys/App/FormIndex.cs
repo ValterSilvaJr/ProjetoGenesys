@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ProjetoGenesys.App.controller;
 using ProjetoGenesys.App.view;
 
 namespace ProjetoGenesys
@@ -68,7 +69,8 @@ namespace ProjetoGenesys
         private void btnPessoaFisica_Click(object sender, EventArgs e)
         {
             string tipoUsuario = "PF";
-            AbrirChildForm(new FormCadastroUsuario(tipoUsuario));
+            //AbrirChildForm(new FormCadastroUsuario(tipoUsuario));
+            AbrirChildForm.exibirFormularioChild(new FormCadastroUsuario(tipoUsuario), pnlChildForm);
             EsconderSubmenu();
             
         }
@@ -76,14 +78,16 @@ namespace ProjetoGenesys
         private void btnPessoaJuridica_Click(object sender, EventArgs e)
         {
             string tipoUsuario = "PJ";
-            AbrirChildForm(new FormCadastroUsuario(tipoUsuario));
+            //AbrirChildForm(new FormCadastroUsuario(tipoUsuario));
+            AbrirChildForm.exibirFormularioChild(new FormCadastroUsuario(tipoUsuario), pnlChildForm);
             EsconderSubmenu();
         }
 
         private void btnFuncionario_Click(object sender, EventArgs e)
         {
             string tipoUsuario = "FCN";
-            AbrirChildForm(new FormCadastroUsuario(tipoUsuario));
+            AbrirChildForm.exibirFormularioChild(new FormCadastroUsuario(tipoUsuario), pnlChildForm);
+            //AbrirChildForm(new FormCadastroUsuario(tipoUsuario));
             EsconderSubmenu();
         }
 #endregion
@@ -96,7 +100,8 @@ namespace ProjetoGenesys
 
         private void btnVeiculoLeve_Click(object sender, EventArgs e)
         {
-            AbrirChildForm(new FormCadastroVeiculo());
+            //AbrirChildForm(new FormCadastroVeiculo());
+            AbrirChildForm.exibirFormularioChild(new FormCadastroVeiculo(), pnlChildForm);
             EsconderSubmenu();
         }
 
@@ -130,7 +135,8 @@ namespace ProjetoGenesys
         }
         private void btnConsultarUsuarios_Click(object sender, EventArgs e)
         {
-            AbrirChildForm(new FormBuscarUsuario());
+            //AbrirChildForm(new FormBuscarUsuario());
+            AbrirChildForm.exibirFormularioChild(new FormBuscarUsuario(), pnlChildForm);
             EsconderSubmenu();
         }
 
@@ -139,7 +145,7 @@ namespace ProjetoGenesys
             EsconderSubmenu();
         }
         #endregion
-
+        /*
         private Form formularioAtivo = null;
         private void AbrirChildForm(Form childForm)
         {
@@ -156,7 +162,6 @@ namespace ProjetoGenesys
             childForm.BringToFront();
             childForm.Show();
         }
-
-        
+        */
     }
 }

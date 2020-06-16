@@ -133,31 +133,46 @@ namespace ProjetoGenesys.App.model
                 }
             }
         }
-        public bool ListarDetalhesUsuario(DataGridView dgvUsuarioDetalhes, string idUsuario)
+        public bool ListarDetalhesUsuario(string idUsuario, string tipoUsuario, PojoUsuario pojoUsuario)
         {
 
-            string sqlQueryDetalhes = "SELECT u.nome, u.email FROM USUARIO u " +
-                                      "WHERE u.id_usuario =" + idUsuario;
+            string sqlQueryDetalhes =   "SELECT u.nome, u.email, u.senha, c.tipo, e.logradouro, e.numero, e.cep, e.bairro, e.cidade, e.uf, e.pais "
+                                      + "FROM USUARIO u "
+                                      + "INNER JOIN CLIENTE c ON c.id_usuario = u.id_usuario "
+                                      + "INNER JOIN ENDERECO e ON e.id_usuario = u.id_usuario "
+                                      + "WHERE u.id_usuario =" + idUsuario;
+
+
+
+            //MessageBox.Show(idUsuario + " " + tipoUsuario);
 
             try
             {
                 sqlConnection.Open();
-
                 SqlCommand sqlCommand = new SqlCommand(sqlQueryDetalhes, sqlConnection);
-                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
-                DataTable dataTable = new DataTable();
-                sqlDataAdapter.Fill(dataTable);
-                dgvUsuarioDetalhes.DataSource = dataTable;
+                SqlDataReader reader;
+                
+                //READER
+                reader = sqlCommand.ExecuteReader();
+                reader.Read();
 
-                dgvUsuarioDetalhes.RowsDefaultCellStyle.BackColor = Color.White;
-                dgvUsuarioDetalhes.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray;
+                pojoUsuario.setNome(reader["nome"].ToString());
+                pojoUsuario.setEmail(reader["email"].ToString());
+                pojoUsuario.setSenha(reader["senha"].ToString());
+                pojoUsuario.setLogradouro(reader["logradouro"].ToString());
+                pojoUsuario.setNumero(reader["numero"].ToString());
+                pojoUsuario.setCep(reader["cep"].ToString());
+                pojoUsuario.setBairro(reader["bairro"].ToString());
+                pojoUsuario.setCidade(reader["cidade"].ToString());
+                pojoUsuario.setUf(reader["uf"].ToString());
+                pojoUsuario.setPais(reader["pais"].ToString());
 
                 return true;
 
             }
             catch (SqlException ex)
             {
-                MessageBox.Show("Erro ao consultar os dados" + ex.Message, "Projeto Genesys", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Erro ao consultar os dados " + ex.Message, "Projeto Genesys", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return false;
             }
             finally

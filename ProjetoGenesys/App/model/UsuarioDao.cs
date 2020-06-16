@@ -183,5 +183,59 @@ namespace ProjetoGenesys.App.model
                 }
             }
         }
+
+        public int AtualizarUsuario(string idUsuario, PojoUsuario pojoUsuario)
+        {
+            string sqlQueryAtualizar = "UPDATE USUARIO SET nome=@nome WHERE id_usuario=" + idUsuario;
+            MessageBox.Show(sqlQueryAtualizar);
+
+            try
+            {
+                sqlConnection.Open();
+                SqlCommand sqlCommand = new SqlCommand(sqlQueryAtualizar, sqlConnection);
+                sqlCommand.Parameters.Add(new SqlParameter("@nome", pojoUsuario.getNome()));
+                sqlCommand.ExecuteNonQuery();
+
+                return 1;
+            }
+            catch(SqlException ex)
+            {
+                MessageBox.Show("Erro ao atualizar os dados " + ex.Message, "Projeto Genesys", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return 0;
+            }
+            finally
+            {
+                if (sqlConnection != null)
+                {
+                    sqlConnection.Close();
+                }
+            }
+        }
+        public bool DeletarUsuario(string idUsuario)
+        {
+            string sqlQueryDeletar = "DELETE FROM USUARIO WHERE id_usuario=" + idUsuario;
+
+            try
+            {
+                sqlConnection.Open();
+                SqlCommand sqlCommand = new SqlCommand(sqlQueryDeletar, sqlConnection);
+                sqlCommand.Parameters.Add(new SqlParameter("@id_usuario", idUsuario));
+                sqlCommand.ExecuteNonQuery();
+
+                return true;
+            }
+            catch(SqlException ex)
+            {
+                MessageBox.Show("Erro ao excluir o usuario " + ex.Message, "Projeto Genesys", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return false;
+            }
+            finally
+            {
+                if (sqlConnection != null)
+                {
+                    sqlConnection.Close();
+                }
+            }
+        }
     }
 }

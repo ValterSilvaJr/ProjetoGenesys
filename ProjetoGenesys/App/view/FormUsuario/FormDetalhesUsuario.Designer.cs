@@ -77,6 +77,7 @@
             this.btnVoltar = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
             this.btnAtualizar = new System.Windows.Forms.Button();
+            this.btnDeletar = new System.Windows.Forms.Button();
             this.pnlPF.SuspendLayout();
             this.pnlPJ.SuspendLayout();
             this.pnlDadosContato.SuspendLayout();
@@ -519,6 +520,7 @@
             // 
             // pnlBotoes
             // 
+            this.pnlBotoes.Controls.Add(this.btnDeletar);
             this.pnlBotoes.Controls.Add(this.btnVoltar);
             this.pnlBotoes.Controls.Add(this.btnEditar);
             this.pnlBotoes.Controls.Add(this.btnAtualizar);
@@ -530,7 +532,7 @@
             // 
             // btnVoltar
             // 
-            this.btnVoltar.Location = new System.Drawing.Point(232, 20);
+            this.btnVoltar.Location = new System.Drawing.Point(338, 20);
             this.btnVoltar.Name = "btnVoltar";
             this.btnVoltar.Size = new System.Drawing.Size(75, 23);
             this.btnVoltar.TabIndex = 2;
@@ -557,6 +559,16 @@
             this.btnAtualizar.Text = "Atualizar";
             this.btnAtualizar.UseVisualStyleBackColor = true;
             this.btnAtualizar.Click += new System.EventHandler(this.btnAtualizar_Click);
+            // 
+            // btnDeletar
+            // 
+            this.btnDeletar.Location = new System.Drawing.Point(235, 20);
+            this.btnDeletar.Name = "btnDeletar";
+            this.btnDeletar.Size = new System.Drawing.Size(75, 23);
+            this.btnDeletar.TabIndex = 3;
+            this.btnDeletar.Text = "Deletar";
+            this.btnDeletar.UseVisualStyleBackColor = true;
+            this.btnDeletar.Click += new System.EventHandler(this.btnDeletar_Click);
             // 
             // FormDetalhesUsuario
             // 
@@ -635,5 +647,6 @@
         private System.Windows.Forms.Button btnAtualizar;
         private System.Windows.Forms.Button btnVoltar;
         private System.Windows.Forms.Button btnEditar;
+        private System.Windows.Forms.Button btnDeletar;
     }
 }

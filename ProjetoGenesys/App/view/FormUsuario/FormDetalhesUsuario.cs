@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ProjetoGenesys.App.controller;
 using ProjetoGenesys.App.model;
 
 namespace ProjetoGenesys.App.view
@@ -18,14 +19,40 @@ namespace ProjetoGenesys.App.view
         PojoFuncionario pojoFcn = new PojoFuncionario();
         PojoPessoaFisica pojoPf = new PojoPessoaFisica();
         PojoPessoaJuridica pojoPj = new PojoPessoaJuridica();
+        bool stateAtt = false;
+        string idUsuario, tipoUsuario;
 
-        public FormDetalhesUsuario(string idUsuario, string tipoUsuario)
+        public FormDetalhesUsuario(string idUsuarioParam, string tipoUsuarioParam)
         {
             InitializeComponent();
-            
+            idUsuario = idUsuarioParam;
+            tipoUsuario = tipoUsuarioParam;
             BloquearControles();
             usuarioDao.ListarDetalhesUsuario(idUsuario, tipoUsuario, pojoUsuario);
-
+            CarregarDadosUsuario();
+            /*
+            if (stateAtt)
+            {
+                AtualizarDadosUsuario();
+                usuarioDao.AtualizarUsuario(idUsuario, pojoUsuario);
+            }
+            else
+            {
+                CarregarDadosUsuario();
+            }
+            */
+        }
+        private void BloquearControles()
+        {
+            txtNome.Enabled = false;
+            txtNome.BackColor = Color.LightGray;
+        }
+        private void DesbloquearControles()
+        {
+            
+        }
+        private void CarregarDadosUsuario()
+        {
             txtNome.Text = pojoUsuario.getNome();
             txtEmail.Text = pojoUsuario.getEmail();
             mskSenha.Text = pojoUsuario.getSenha();
@@ -36,21 +63,16 @@ namespace ProjetoGenesys.App.view
             txtCidade.Text = pojoUsuario.getCidade();
             txtUf.Text = pojoUsuario.getUf();
             txtPais.Text = pojoUsuario.getPais();
-
         }
-        private void BloquearControles()
+        private void AtualizarDadosUsuario()
         {
-            txtNome.Enabled = false;
-            txtNome.BackColor = Color.LightGray;
-        }
-        private void DesbloquearControles()
-        {
-
+            pojoUsuario.setNome(txtNome.Text);
         }
 
         private void btnAtualizar_Click(object sender, EventArgs e)
         {
-
+            pojoUsuario.setNome(txtNome.Text);
+            usuarioDao.AtualizarUsuario(idUsuario, pojoUsuario);
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
@@ -58,6 +80,21 @@ namespace ProjetoGenesys.App.view
             txtNome.Enabled = true;
             txtNome.BackColor = Color.White;
 
+        }
+
+        private void btnDeletar_Click(object sender, EventArgs e)
+        {
+            bool isDeleted = usuarioDao.DeletarUsuario(idUsuario);
+
+            if(isDeleted)
+            {
+                Close();
+                MessageBox.Show("Dados Excluidos com sucesso", "Genesys", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Erro ao excluir os dados", "Genesys", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void btnVoltar_Click(object sender, EventArgs e)

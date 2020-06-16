@@ -41,6 +41,8 @@ SELECT u.id_usuario, u.nome, u.email, c.tipo FROM USUARIO u
 INNER JOIN CLIENTE c on c.id_usuario = u.id_usuario
 where u.id_usuario = 4;
 
+UPDATE USUARIO SET nome='Valter Silva' where id_usuario=4;
+
 /*Faz uma busca nas tabelas relacionadas*/
 select u.id_usuario 'ID', c.id_cliente 'ID CLIENTE', e.id_endereco 'ID END', u.nome 'NOME COMPLETO', pf.cpf 'CPF', pf.dataNasc 'IDADE', e.logradouro 'LOGRADOURO', e.numero 'N', e.bairro 'BAIRRO', e.cidade 'CIDADE', e.uf 'ESTADO', e.pais 'PAÍS' from CLIENTE c
 inner join USUARIO u on u.id_usuario = c.id_usuario

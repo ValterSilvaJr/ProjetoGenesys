@@ -49,6 +49,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -69,11 +70,11 @@
     <Compile Include="App\model\PojoUsuario.cs" />
     <Compile Include="App\model\PojoVeiculo.cs" />
     <Compile Include="App\model\UsuarioDao.cs" />
-    <Compile Include="App\view\FormUsuario\FormBuscarUsuario.cs">
+    <Compile Include="App\view\FormUsuario\FormListarUsuarios.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="App\view\FormUsuario\FormBuscarUsuario.Designer.cs">
-      <DependentUpon>FormBuscarUsuario.cs</DependentUpon>
+    <Compile Include="App\view\FormUsuario\FormListarUsuarios.Designer.cs">
+      <DependentUpon>FormListarUsuarios.cs</DependentUpon>
     </Compile>
     <Compile Include="App\view\FormUsuario\FormCadastroUsuario.cs">
       <SubType>Form</SubType>
@@ -113,8 +114,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="App\view\FormUsuario\FormBuscarUsuario.resx">
-      <DependentUpon>FormBuscarUsuario.cs</DependentUpon>
+    <EmbeddedResource Include="App\view\FormUsuario\FormListarUsuarios.resx">
+      <DependentUpon>FormListarUsuarios.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="App\view\FormUsuario\FormCadastroUsuario.resx">
       <DependentUpon>FormCadastroUsuario.cs</DependentUpon>
@@ -162,6 +163,8 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -12,10 +12,11 @@ namespace ProjetoGenesys.App.model
     class UsuarioDao
     {
         SqlConnection sqlConnection = Conexao.SqlServer.getConnection();
-        string sqlQuery;
 
         public int CadastrarUsuario(PojoUsuario pojoUsuario, PojoPessoaFisica pojoPf, PojoPessoaJuridica pojoPj, PojoFuncionario pojoFcn, string tipoUsuario)
         {
+            string sqlQuery = "";
+
             switch (tipoUsuario)
             {
                 case "PF":
@@ -101,14 +102,14 @@ namespace ProjetoGenesys.App.model
         }
         public bool ListarUsuarios(DataGridView dgvUsuarios)
         {
-            string sqlQueryUsuarios = "SELECT u.id_usuario, u.nome, u.email, c.tipo FROM USUARIO u " +
+            string sqlQuery = "SELECT u.id_usuario, u.nome, u.email, c.tipo FROM USUARIO u " +
                               "INNER JOIN CLIENTE c on u.id_usuario = c.id_usuario";
 
             try
             {
                 sqlConnection.Open();
 
-                SqlCommand sqlCommand = new SqlCommand(sqlQueryUsuarios, sqlConnection);
+                SqlCommand sqlCommand = new SqlCommand(sqlQuery, sqlConnection);
                 SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
                 DataTable dataTable = new DataTable();
                 sqlDataAdapter.Fill(dataTable);
@@ -135,7 +136,19 @@ namespace ProjetoGenesys.App.model
         }
         public bool ListarDetalhesUsuario(string idUsuario, string tipoUsuario, PojoUsuario pojoUsuario)
         {
+            string sqlQuery = "";
 
+            switch (tipoUsuario)
+            {
+                case "PF":
+                    
+                    break;
+                case "PJ":
+                    break;
+                case "FCN":
+                    break;
+            }
+            
             string sqlQueryDetalhes =   "SELECT u.nome, u.email, u.senha, c.tipo, e.logradouro, e.numero, e.cep, e.bairro, e.cidade, e.uf, e.pais "
                                       + "FROM USUARIO u "
                                       + "INNER JOIN CLIENTE c ON c.id_usuario = u.id_usuario "
@@ -186,13 +199,12 @@ namespace ProjetoGenesys.App.model
 
         public int AtualizarUsuario(string idUsuario, PojoUsuario pojoUsuario)
         {
-            string sqlQueryAtualizar = "UPDATE USUARIO SET nome=@nome WHERE id_usuario=" + idUsuario;
-            MessageBox.Show(sqlQueryAtualizar);
+            string sqlQuery = "UPDATE USUARIO SET nome=@nome WHERE id_usuario=" + idUsuario;
 
             try
             {
                 sqlConnection.Open();
-                SqlCommand sqlCommand = new SqlCommand(sqlQueryAtualizar, sqlConnection);
+                SqlCommand sqlCommand = new SqlCommand(sqlQuery, sqlConnection);
                 sqlCommand.Parameters.Add(new SqlParameter("@nome", pojoUsuario.getNome()));
                 sqlCommand.ExecuteNonQuery();
 
@@ -213,12 +225,12 @@ namespace ProjetoGenesys.App.model
         }
         public bool DeletarUsuario(string idUsuario)
         {
-            string sqlQueryDeletar = "DELETE FROM USUARIO WHERE id_usuario=" + idUsuario;
+            string sqlQuery = "DELETE FROM USUARIO WHERE id_usuario=" + idUsuario;
 
             try
             {
                 sqlConnection.Open();
-                SqlCommand sqlCommand = new SqlCommand(sqlQueryDeletar, sqlConnection);
+                SqlCommand sqlCommand = new SqlCommand(sqlQuery, sqlConnection);
                 sqlCommand.Parameters.Add(new SqlParameter("@id_usuario", idUsuario));
                 sqlCommand.ExecuteNonQuery();
 

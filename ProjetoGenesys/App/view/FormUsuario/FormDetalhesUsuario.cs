@@ -19,40 +19,154 @@ namespace ProjetoGenesys.App.view
         PojoFuncionario pojoFcn = new PojoFuncionario();
         PojoPessoaFisica pojoPf = new PojoPessoaFisica();
         PojoPessoaJuridica pojoPj = new PojoPessoaJuridica();
-        bool stateAtt = false;
         string idUsuario, tipoUsuario;
 
         public FormDetalhesUsuario(string idUsuarioParam, string tipoUsuarioParam)
         {
             InitializeComponent();
-            idUsuario = idUsuarioParam;
-            tipoUsuario = tipoUsuarioParam;
             BloquearControles();
+            CustomizarAparencia();
+
+            idUsuario = idUsuarioParam; 
+            tipoUsuario = tipoUsuarioParam;
+
             usuarioDao.ListarDetalhesUsuario(idUsuario, tipoUsuario, pojoUsuario);
-            CarregarDadosUsuario();
-            /*
-            if (stateAtt)
+
+            // O formulário recebe um parâmetro com o tipo de usuário que será inserido no sistema e exibe o painél especializado
+
+            switch (tipoUsuario)
             {
-                AtualizarDadosUsuario();
-                usuarioDao.AtualizarUsuario(idUsuario, pojoUsuario);
+                case "PF":
+                    ExibirPainelEspecializacao(pnlPF, "PF");
+                    break;
+                case "PJ":
+                    ExibirPainelEspecializacao(pnlPJ, "PJ");
+                    break;
+                case "FCN":
+                    ExibirPainelEspecializacao(pnlCargo, "FCN");
+                    break;
+            }
+
+            CarregarDadosUsuario();
+        }
+        #region Lógica de ocultar Painéis
+
+        private void CustomizarAparencia()
+        {
+            //Inicialmente todos os painéis são setados para ter a visibilidade false através deste método que é carregado junto com o form atual
+
+            pnlPF.Visible = false;
+            pnlPJ.Visible = false;
+            pnlCargo.Visible = false;
+        }
+        private void EsconderPainelEspecializacao()
+        {
+
+            //É verificado se os painés estão visíveis e caso seja true, os mesmos são setados para false
+
+            if (pnlPF.Visible)
+            {
+                pnlPF.Visible = false;
+            }
+            if (pnlCargo.Visible)
+            {
+                pnlCargo.Visible = false;
+            }
+            if (pnlPJ.Visible)
+            {
+                pnlPJ.Visible = false;
+            }
+        }
+        private void ExibirPainelEspecializacao(Panel especializacaoPanel, string tipo)
+        {
+            //É passado como parâmetro o painel que ficará visível e o tipo de usuário através deste método, deixando todos os demais painéis invisíveis.
+
+            if (especializacaoPanel.Visible == false)
+            {
+                EsconderPainelEspecializacao();
+                especializacaoPanel.Visible = true;
+                tipoUsuario = tipo;
             }
             else
             {
-                CarregarDadosUsuario();
+                especializacaoPanel.Visible = false;
             }
-            */
         }
+        #endregion
         private void BloquearControles()
         {
-            txtNome.Enabled = false;
-            txtNome.BackColor = Color.LightGray;
+            //Botão Atualizar
+            btnAtualizar.Enabled    = false;
+
+            //Botão Atualizar
+            btnEditar.Enabled       = true;
+            
+            //Usuário
+            txtNome.Enabled         = false;     txtNome.BackColor         = Color.LightGray;
+            txtEmail.Enabled        = false;     txtEmail.BackColor        = Color.LightGray;
+            mskSenha.Enabled        = false;     mskSenha.BackColor        = Color.LightGray;
+            txtLogradouro.Enabled   = false;     txtLogradouro.BackColor   = Color.LightGray;
+            txtNumero.Enabled       = false;     txtNumero.BackColor       = Color.LightGray;
+            mskCep.Enabled          = false;     mskCep.BackColor          = Color.LightGray;
+            txtBairro.Enabled       = false;     txtBairro.BackColor       = Color.LightGray;
+            txtCidade.Enabled       = false;     txtCidade.BackColor       = Color.LightGray;
+            txtUf.Enabled           = false;     txtUf.BackColor           = Color.LightGray;
+            txtPais.Enabled         = false;     txtPais.BackColor         = Color.LightGray;
+
+            //Pessoa Física
+            mskCpf.Enabled          = false;     mskCpf.BackColor          = Color.LightGray;
+            mskDataNasc.Enabled     = false;     mskDataNasc.BackColor     = Color.LightGray;
+
+            //Pessoa Jurídica
+            mskCnpj.Enabled         = false;    mskCnpj.BackColor          = Color.LightGray;
+            mskInscEst.Enabled      = false;    mskInscEst.BackColor       = Color.LightGray;
+            txtRazaoSocial.Enabled  = false;    txtRazaoSocial.BackColor   = Color.LightGray;
+            txtNomeFantasia.Enabled = false;    txtNomeFantasia.BackColor  = Color.LightGray;
+
+            //Funcionário
+            txtCargo.Enabled        = false;    txtCargo.BackColor         = Color.LightGray;
+            txtSetor.Enabled        = false;    txtSetor.BackColor         = Color.LightGray;
+            txtTurno.Enabled        = false;    txtTurno.BackColor         = Color.LightGray;
+
         }
         private void DesbloquearControles()
         {
+            //Botão Atualizar
+            btnAtualizar.Enabled    = true;
+
+            //Botão Editar
+            btnEditar.Enabled       = false;
             
+            //Usuário
+            txtNome.Enabled         = true;    txtNome.BackColor           = Color.White;
+            txtEmail.Enabled        = true;    txtEmail.BackColor          = Color.White;
+            mskSenha.Enabled        = true;    mskSenha.BackColor          = Color.White;
+            txtLogradouro.Enabled   = true;    txtLogradouro.BackColor     = Color.White;
+            txtNumero.Enabled       = true;    txtNumero.BackColor         = Color.White;
+            mskCep.Enabled          = true;    mskCep.BackColor            = Color.White;
+            txtBairro.Enabled       = true;    txtBairro.BackColor         = Color.White;
+            txtCidade.Enabled       = true;    txtCidade.BackColor         = Color.White;
+            txtUf.Enabled           = true;    txtUf.BackColor             = Color.White;
+            txtPais.Enabled         = true;    txtPais.BackColor           = Color.White;
+
+            //Pessoa Física
+            mskCpf.Enabled          = true;    mskCpf.BackColor            = Color.White;
+            mskDataNasc.Enabled     = true;    mskDataNasc.BackColor       = Color.White;
+
+            //Pessoa Jurídica
+            mskCnpj.Enabled         = true;    mskCnpj.BackColor           = Color.White;
+            mskInscEst.Enabled      = true;    mskInscEst.BackColor        = Color.White;
+            txtRazaoSocial.Enabled  = true;    txtRazaoSocial.BackColor    = Color.White;
+            txtNomeFantasia.Enabled = true;    txtNomeFantasia.BackColor   = Color.White;
+
+            //Funcionário
+            txtCargo.Enabled        = true;    txtCargo.BackColor          = Color.White;
+            txtSetor.Enabled        = true;    txtSetor.BackColor          = Color.White;
+            txtTurno.Enabled        = true;    txtTurno.BackColor          = Color.White;
         }
         private void CarregarDadosUsuario()
         {
+            //Carrega os dados em comum
             txtNome.Text = pojoUsuario.getNome();
             txtEmail.Text = pojoUsuario.getEmail();
             mskSenha.Text = pojoUsuario.getSenha();
@@ -63,23 +177,31 @@ namespace ProjetoGenesys.App.view
             txtCidade.Text = pojoUsuario.getCidade();
             txtUf.Text = pojoUsuario.getUf();
             txtPais.Text = pojoUsuario.getPais();
-        }
-        private void AtualizarDadosUsuario()
-        {
-            pojoUsuario.setNome(txtNome.Text);
+
+            //Carrega os dados Especializados
+            switch (tipoUsuario)
+            {
+                case "PF":
+                    mskCpf.Text = pojoPf.getCpf();
+                    mskDataNasc.Text = pojoPf.getDataNasc();
+                    break;
+                case "PJ":
+                    break;
+                case "FCN":
+                    break;
+            }
         }
 
         private void btnAtualizar_Click(object sender, EventArgs e)
         {
             pojoUsuario.setNome(txtNome.Text);
             usuarioDao.AtualizarUsuario(idUsuario, pojoUsuario);
+            BloquearControles();
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
-        {           
-            txtNome.Enabled = true;
-            txtNome.BackColor = Color.White;
-
+        {
+            DesbloquearControles();
         }
 
         private void btnDeletar_Click(object sender, EventArgs e)

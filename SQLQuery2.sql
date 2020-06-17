@@ -41,7 +41,27 @@ SELECT u.id_usuario, u.nome, u.email, c.tipo FROM USUARIO u
 INNER JOIN CLIENTE c on c.id_usuario = u.id_usuario
 where u.id_usuario = 4;
 
-UPDATE USUARIO SET nome='Valter Silva' where id_usuario=4;
+BEGIN TRANSACTION
+UPDATE USUARIO 
+	SET nome='José', email='test688@mail.com', senha='1234ABC' 
+	where id_usuario=8;
+
+UPDATE ENDERECO 
+	SET logradouro='Rua 8000', numero='22' FROM ENDERECO e
+	inner join USUARIO u ON u.id_usuario = e.id_usuario WHERE u.id_usuario = 8;
+
+UPDATE PESSOA_FISICA
+	SET cpf='00045688000' FROM PESSOA_FISICA pf
+	inner join CLIENTE c ON c.id_cliente = pf.id_cliente WHERE c.id_cliente = 8;
+COMMIT
+
+UPDATE PESSOA_JURIDICA
+	SET cnpj='12333222000188' FROM PESSOA_JURIDICA pj
+	inner join CLIENTE c ON c.id_cliente = pj.id_cliente WHERE c.id_cliente = 8;
+
+UPDATE FUNCIONARIO
+	SET cargo='C# Developer' FROM FUNCIONARIO f
+	inner join USUARIO u ON u.id_usuario = f.id_usuario WHERE u.id_usuario=2;
 
 /*Faz uma busca nas tabelas relacionadas*/
 select u.id_usuario 'ID', c.id_cliente 'ID CLIENTE', e.id_endereco 'ID END', u.nome 'NOME COMPLETO', pf.cpf 'CPF', pf.dataNasc 'IDADE', e.logradouro 'LOGRADOURO', e.numero 'N', e.bairro 'BAIRRO', e.cidade 'CIDADE', e.uf 'ESTADO', e.pais 'PAÍS' from USUARIO u
@@ -63,7 +83,7 @@ select u.id_usuario 'ID', c.id_cliente 'ID CLIENTE', e.id_endereco 'ID END', u.n
 inner join USUARIO u on u.id_usuario = c.id_usuario
 inner join PESSOA_FISICA pf on pf.id_cliente = c.id_usuario
 inner join ENDERECO e on e.id_usuario = u.id_usuario
-where u.id_usuario = 7
+where u.id_usuario = 8
 
 /*Comando para resetar a tabela*/
 dbcc checkident (usuario, reseed, 0) 

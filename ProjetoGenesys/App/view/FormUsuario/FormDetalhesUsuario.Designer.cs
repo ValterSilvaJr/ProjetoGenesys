@@ -74,10 +74,10 @@
             this.lblTurno = new System.Windows.Forms.Label();
             this.pnlContainer = new System.Windows.Forms.Panel();
             this.pnlBotoes = new System.Windows.Forms.Panel();
+            this.btnDeletar = new System.Windows.Forms.Button();
             this.btnVoltar = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
             this.btnAtualizar = new System.Windows.Forms.Button();
-            this.btnDeletar = new System.Windows.Forms.Button();
             this.pnlPF.SuspendLayout();
             this.pnlPJ.SuspendLayout();
             this.pnlDadosContato.SuspendLayout();
@@ -99,16 +99,20 @@
             // mskDataNasc
             // 
             this.mskDataNasc.Location = new System.Drawing.Point(123, 52);
+            this.mskDataNasc.Mask = "00/00/0000";
             this.mskDataNasc.Name = "mskDataNasc";
             this.mskDataNasc.Size = new System.Drawing.Size(171, 23);
             this.mskDataNasc.TabIndex = 6;
+            this.mskDataNasc.ValidatingType = typeof(System.DateTime);
             // 
             // mskCpf
             // 
             this.mskCpf.Location = new System.Drawing.Point(123, 12);
+            this.mskCpf.Mask = "99.999.999-99";
             this.mskCpf.Name = "mskCpf";
             this.mskCpf.Size = new System.Drawing.Size(171, 23);
             this.mskCpf.TabIndex = 5;
+            this.mskCpf.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
             // lblCpf
             // 
@@ -153,7 +157,9 @@
             // 
             // txtUf
             // 
+            this.txtUf.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtUf.Location = new System.Drawing.Point(611, 52);
+            this.txtUf.MaxLength = 2;
             this.txtUf.Name = "txtUf";
             this.txtUf.Size = new System.Drawing.Size(23, 23);
             this.txtUf.TabIndex = 18;
@@ -216,9 +222,11 @@
             // mskCep
             // 
             this.mskCep.Location = new System.Drawing.Point(123, 52);
+            this.mskCep.Mask = "00000-000";
             this.mskCep.Name = "mskCep";
             this.mskCep.Size = new System.Drawing.Size(84, 23);
             this.mskCep.TabIndex = 9;
+            this.mskCep.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
             // lblPais
             // 
@@ -374,6 +382,7 @@
             // txtEmail
             // 
             this.txtEmail.Location = new System.Drawing.Point(123, 52);
+            this.txtEmail.MaxLength = 100;
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(305, 23);
             this.txtEmail.TabIndex = 6;
@@ -381,6 +390,7 @@
             // txtNome
             // 
             this.txtNome.Location = new System.Drawing.Point(123, 12);
+            this.txtNome.MaxLength = 100;
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(305, 23);
             this.txtNome.TabIndex = 5;
@@ -389,6 +399,7 @@
             // 
             this.mskSenha.Location = new System.Drawing.Point(123, 92);
             this.mskSenha.Name = "mskSenha";
+            this.mskSenha.PasswordChar = '●';
             this.mskSenha.Size = new System.Drawing.Size(171, 23);
             this.mskSenha.TabIndex = 4;
             // 
@@ -530,6 +541,16 @@
             this.pnlBotoes.Size = new System.Drawing.Size(678, 62);
             this.pnlBotoes.TabIndex = 9;
             // 
+            // btnDeletar
+            // 
+            this.btnDeletar.Location = new System.Drawing.Point(235, 20);
+            this.btnDeletar.Name = "btnDeletar";
+            this.btnDeletar.Size = new System.Drawing.Size(75, 23);
+            this.btnDeletar.TabIndex = 3;
+            this.btnDeletar.Text = "Deletar";
+            this.btnDeletar.UseVisualStyleBackColor = true;
+            this.btnDeletar.Click += new System.EventHandler(this.btnDeletar_Click);
+            // 
             // btnVoltar
             // 
             this.btnVoltar.Location = new System.Drawing.Point(338, 20);
@@ -559,16 +580,6 @@
             this.btnAtualizar.Text = "Atualizar";
             this.btnAtualizar.UseVisualStyleBackColor = true;
             this.btnAtualizar.Click += new System.EventHandler(this.btnAtualizar_Click);
-            // 
-            // btnDeletar
-            // 
-            this.btnDeletar.Location = new System.Drawing.Point(235, 20);
-            this.btnDeletar.Name = "btnDeletar";
-            this.btnDeletar.Size = new System.Drawing.Size(75, 23);
-            this.btnDeletar.TabIndex = 3;
-            this.btnDeletar.Text = "Deletar";
-            this.btnDeletar.UseVisualStyleBackColor = true;
-            this.btnDeletar.Click += new System.EventHandler(this.btnDeletar_Click);
             // 
             // FormDetalhesUsuario
             // 

@@ -44,17 +44,26 @@ where u.id_usuario = 4;
 UPDATE USUARIO SET nome='Valter Silva' where id_usuario=4;
 
 /*Faz uma busca nas tabelas relacionadas*/
-select u.id_usuario 'ID', c.id_cliente 'ID CLIENTE', e.id_endereco 'ID END', u.nome 'NOME COMPLETO', pf.cpf 'CPF', pf.dataNasc 'IDADE', e.logradouro 'LOGRADOURO', e.numero 'N', e.bairro 'BAIRRO', e.cidade 'CIDADE', e.uf 'ESTADO', e.pais 'PAÍS' from CLIENTE c
-inner join USUARIO u on u.id_usuario = c.id_usuario
-inner join PESSOA_FISICA pf on pf.id_cliente = c.id_usuario
+select u.id_usuario 'ID', c.id_cliente 'ID CLIENTE', e.id_endereco 'ID END', u.nome 'NOME COMPLETO', pf.cpf 'CPF', pf.dataNasc 'IDADE', e.logradouro 'LOGRADOURO', e.numero 'N', e.bairro 'BAIRRO', e.cidade 'CIDADE', e.uf 'ESTADO', e.pais 'PAÍS' from USUARIO u
 inner join ENDERECO e on e.id_usuario = u.id_usuario
+inner join CLIENTE c on c.id_usuario = u.id_usuario
+inner join PESSOA_FISICA pf on pf.id_cliente = c.id_cliente
+
+select u.id_usuario 'ID', c.id_cliente 'ID CLIENTE', e.id_endereco 'ID END', u.nome 'NOME COMPLETO', pj.razao_social 'RAZÃO SOCIAL', pj.nome_fantasia 'NOME FANTASIA', pj.cnpj 'CNPJ', pj.inscricao_estadual 'I.E.', e.logradouro 'LOGRADOURO', e.numero 'N', e.bairro 'BAIRRO', e.cidade 'CIDADE', e.uf 'ESTADO', e.pais 'PAÍS' from USUARIO u
+inner join ENDERECO e on e.id_usuario = u.id_usuario
+inner join CLIENTE c on c.id_usuario = u.id_usuario
+inner join PESSOA_JURIDICA pj on pj.id_cliente = c.id_cliente
+
+select u.id_usuario, u.nome, u.email, e.logradouro, e.numero, f.id_funcionario, f.cargo, f.setor, f.turno from USUARIO u
+inner join ENDERECO e ON e.id_usuario = u.id_usuario
+inner join FUNCIONARIO f ON f.id_usuario = u.id_usuario
 
 /*Filtra os usuários da tabela pelo ID*/
 select u.id_usuario 'ID', c.id_cliente 'ID CLIENTE', e.id_endereco 'ID END', u.nome 'NOME COMPLETO', pf.cpf 'CPF', pf.dataNasc 'IDADE', e.logradouro 'LOGRADOURO', e.numero 'N', e.bairro 'BAIRRO', e.cidade 'CIDADE', e.uf 'ESTADO', e.pais 'PAÍS' from CLIENTE c
 inner join USUARIO u on u.id_usuario = c.id_usuario
 inner join PESSOA_FISICA pf on pf.id_cliente = c.id_usuario
 inner join ENDERECO e on e.id_usuario = u.id_usuario
-where u.id_usuario = 1
+where u.id_usuario = 7
 
 /*Comando para resetar a tabela*/
 dbcc checkident (usuario, reseed, 0) 

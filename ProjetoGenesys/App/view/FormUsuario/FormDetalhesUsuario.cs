@@ -30,7 +30,7 @@ namespace ProjetoGenesys.App.view
             idUsuario = idUsuarioParam; 
             tipoUsuario = tipoUsuarioParam;
 
-            usuarioDao.ListarDetalhesUsuario(idUsuario, tipoUsuario, pojoUsuario);
+            usuarioDao.ListarDetalhesUsuario(idUsuario, tipoUsuario, pojoUsuario, pojoPf, pojoPj, pojoFcn);
 
             // O formulário recebe um parâmetro com o tipo de usuário que será inserido no sistema e exibe o painél especializado
 
@@ -186,8 +186,15 @@ namespace ProjetoGenesys.App.view
                     mskDataNasc.Text = pojoPf.getDataNasc();
                     break;
                 case "PJ":
+                    mskCnpj.Text = pojoPj.getCnpj();
+                    mskInscEst.Text = pojoPj.getInscricaoEstadual();
+                    txtRazaoSocial.Text = pojoPj.getRazaoSocial();
+                    txtNomeFantasia.Text = pojoPj.getNomeFantasia();
                     break;
                 case "FCN":
+                    txtCargo.Text = pojoFcn.getCargo();
+                    txtSetor.Text = pojoFcn.getSetor();
+                    txtTurno.Text = pojoFcn.getTurno();
                     break;
             }
         }
@@ -195,7 +202,36 @@ namespace ProjetoGenesys.App.view
         private void btnAtualizar_Click(object sender, EventArgs e)
         {
             pojoUsuario.setNome(txtNome.Text);
-            usuarioDao.AtualizarUsuario(idUsuario, pojoUsuario);
+            pojoUsuario.setEmail(txtEmail.Text);
+            pojoUsuario.setSenha(mskSenha.Text);
+            pojoUsuario.setLogradouro(txtLogradouro.Text);
+            pojoUsuario.setNumero(txtNumero.Text);
+            pojoUsuario.setCep(mskCep.Text);
+            pojoUsuario.setBairro(txtBairro.Text);
+            pojoUsuario.setCidade(txtCidade.Text);
+            pojoUsuario.setUf(txtUf.Text);
+            pojoUsuario.setPais(txtPais.Text);
+
+            switch (tipoUsuario)
+            {
+                case "PF":
+                    pojoPf.setCpf(mskCpf.Text);
+                    pojoPf.setDataNasc(mskDataNasc.Text);
+                    break;
+                case "PJ":
+                    pojoPj.setCnpj(mskCnpj.Text);
+                    pojoPj.setInscricaoEstadual(mskInscEst.Text);
+                    pojoPj.setRazaoSocial(txtRazaoSocial.Text);
+                    pojoPj.setNomeFantasia(txtNomeFantasia.Text);
+                    break;
+                case "FCN":
+                    pojoFcn.setCargo(txtCargo.Text);
+                    pojoFcn.setSetor(txtSetor.Text);
+                    pojoFcn.setTurno(txtTurno.Text);
+                    break;
+            }
+
+            usuarioDao.AtualizarUsuario(idUsuario, tipoUsuario, pojoUsuario, pojoPf, pojoPj, pojoFcn);
             BloquearControles();
         }
 

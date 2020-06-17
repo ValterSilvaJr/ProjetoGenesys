@@ -134,30 +134,35 @@ namespace ProjetoGenesys.App.model
                 }
             }
         }
-        public bool ListarDetalhesUsuario(string idUsuario, string tipoUsuario, PojoUsuario pojoUsuario)
+        public bool ListarDetalhesUsuario(string idUsuario, string tipoUsuario, PojoUsuario pojoUsuario, PojoPessoaFisica pojoPf, PojoPessoaJuridica pojoPj, PojoFuncionario pojoFcn)
         {
-            string sqlQuery = "";
+            string sqlQueryJoin = "";
+            string sqlQueryColumns = "";
 
             switch (tipoUsuario)
             {
                 case "PF":
-                    
+                    sqlQueryColumns = ", c.tipo, pf.cpf, pf.dataNasc";
+                    sqlQueryJoin    = "INNER JOIN CLIENTE c ON c.id_usuario = u.id_usuario  "
+                                    + "INNER JOIN PESSOA_FISICA pf ON pf.id_cliente = c.id_cliente ";
                     break;
                 case "PJ":
+                    sqlQueryColumns = ", c.tipo, pj.cnpj, pj.inscricao_estadual, pj.razao_social, pj.nome_fantasia";
+                    sqlQueryJoin    = "INNER JOIN CLIENTE c ON c.id_usuario = u.id_usuario "
+                                    + "INNER JOIN PESSOA_JURIDICA pj ON pj.id_cliente = c.id_cliente ";
                     break;
                 case "FCN":
+                    sqlQueryColumns = ", f.cargo, f.setor, f.turno";
+                    sqlQueryJoin    = "INNER JOIN FUNCIONARIO f ON f.id_usuario = u.id_usuario ";
                     break;
             }
             
-            string sqlQueryDetalhes =   "SELECT u.nome, u.email, u.senha, c.tipo, e.logradouro, e.numero, e.cep, e.bairro, e.cidade, e.uf, e.pais "
-                                      + "FROM USUARIO u "
-                                      + "INNER JOIN CLIENTE c ON c.id_usuario = u.id_usuario "
+            string sqlQueryDetalhes =   "SELECT u.nome, u.email, u.senha, e.logradouro, e.numero, e.cep, e.bairro, e.cidade, e.uf, e.pais"
+                                      + sqlQueryColumns
+                                      + " FROM USUARIO u "
                                       + "INNER JOIN ENDERECO e ON e.id_usuario = u.id_usuario "
+                                      + sqlQueryJoin
                                       + "WHERE u.id_usuario =" + idUsuario;
-
-
-
-            //MessageBox.Show(idUsuario + " " + tipoUsuario);
 
             try
             {
@@ -180,8 +185,26 @@ namespace ProjetoGenesys.App.model
                 pojoUsuario.setUf(reader["uf"].ToString());
                 pojoUsuario.setPais(reader["pais"].ToString());
 
-                return true;
+                switch (tipoUsuario)
+                {
+                    case "PF":
+                        pojoPf.setCpf(reader["cpf"].ToString());
+                        pojoPf.setDataNasc(reader["dataNasc"].ToString());
+                        break;
+                    case "PJ":
+                        pojoPj.setCnpj(reader["cnpj"].ToString());
+                        pojoPj.setInscricaoEstadual(reader["inscricao_estadual"].ToString());
+                        pojoPj.setRazaoSocial(reader["razao_social"].ToString());
+                        pojoPj.setNomeFantasia(reader["nome_fantasia"].ToString());
+                        break;
+                    case "FCN":
+                        pojoFcn.setCargo(reader["cargo"].ToString());
+                        pojoFcn.setSetor(reader["setor"].ToString());
+                        pojoFcn.setTurno(reader["turno"].ToString());
+                        break;
+                }
 
+                return true;
             }
             catch (SqlException ex)
             {
@@ -197,7 +220,7 @@ namespace ProjetoGenesys.App.model
             }
         }
 
-        public int AtualizarUsuario(string idUsuario, PojoUsuario pojoUsuario)
+        public int AtualizarUsuario(string idUsuario, string tipoUsuario, PojoUsuario pojoUsuario, PojoPessoaFisica pojoPf, PojoPessoaJuridica pojoPj, PojoFuncionario pojoFcn)
         {
             string sqlQuery = "UPDATE USUARIO SET nome=@nome WHERE id_usuario=" + idUsuario;
 
@@ -205,7 +228,46 @@ namespace ProjetoGenesys.App.model
             {
                 sqlConnection.Open();
                 SqlCommand sqlCommand = new SqlCommand(sqlQuery, sqlConnection);
+
+                #region PojoUsuario
                 sqlCommand.Parameters.Add(new SqlParameter("@nome", pojoUsuario.getNome()));
+                sqlCommand.Parameters.Add(new SqlParameter("@email", pojoUsuario.getEmail()));
+                sqlCommand.Parameters.Add(new SqlParameter("@senha", pojoUsuario.getSenha()));
+                sqlCommand.Parameters.Add(new SqlParameter("@logradouro", pojoUsuario.getLogradouro()));
+                sqlCommand.Parameters.Add(new SqlParameter("@numero", pojoUsuario.getNumero()));
+                sqlCommand.Parameters.Add(new SqlParameter("@cep", pojoUsuario.getCep()));
+                sqlCommand.Parameters.Add(new SqlParameter("@bairro", pojoUsuario.getBairro()));
+                sqlCommand.Parameters.Add(new SqlParameter("@cidade", pojoUsuario.getCidade()));
+                sqlCommand.Parameters.Add(new SqlParameter("@uf", pojoUsuario.getUf()));
+                sqlCommand.Parameters.Add(new SqlParameter("@pais", pojoUsuario.getPais()));
+                #endregion
+
+                switch (tipoUsuario)
+                {
+                    case "PF":
+                        #region PojoPessoaFisica
+                        sqlCommand.Parameters.Add(new SqlParameter("@cpf", pojoPf.getCpf()));
+                        sqlCommand.Parameters.Add(new SqlParameter("@dataNasc", Convert.ToDateTime(pojoPf.getDataNasc())));
+                        sqlCommand.Parameters.Add(new SqlParameter("@tipo", pojoPf.getTipo()));
+                        #endregion
+                        break;
+                    case "PJ":
+                        #region PojoPessoaJuridica
+                        sqlCommand.Parameters.Add(new SqlParameter("@cnpj", pojoPj.getCnpj()));
+                        sqlCommand.Parameters.Add(new SqlParameter("@inscricao_estadual", pojoPj.getInscricaoEstadual()));
+                        sqlCommand.Parameters.Add(new SqlParameter("@razao_social", pojoPj.getRazaoSocial()));
+                        sqlCommand.Parameters.Add(new SqlParameter("@nome_fantasia", pojoPj.getNomeFantasia()));
+                        sqlCommand.Parameters.Add(new SqlParameter("@tipo", pojoPj.getTipo()));
+                        #endregion
+                        break;
+                    case "FCN":
+                        #region PojoFuncionario
+                        sqlCommand.Parameters.Add(new SqlParameter("@cargo", pojoFcn.getCargo()));
+                        sqlCommand.Parameters.Add(new SqlParameter("@setor", pojoFcn.getSetor()));
+                        sqlCommand.Parameters.Add(new SqlParameter("@turno", pojoFcn.getTurno()));
+                        #endregion
+                        break;
+                }
                 sqlCommand.ExecuteNonQuery();
 
                 return 1;

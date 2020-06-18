@@ -21,11 +21,11 @@ namespace ProjetoGenesys.App.model
             {
                 case "PF":
                     sqlQuery =  "INSERT INTO cliente(id_usuario, tipo) values(@@IDENTITY, @tipo) "
-                             +  "INSERT INTO pessoa_fisica(cpf, id_cliente, dataNasc) values(@cpf, @@IDENTITY, @dataNasc)";
+                             +  "INSERT INTO pessoa_fisica(cpf, id_usuario, dataNasc) values(@cpf, @@IDENTITY, @dataNasc)";
                     break;
                 case "PJ":
                     sqlQuery = "INSERT INTO cliente(id_usuario, tipo) values(@@IDENTITY, @tipo) "
-                             + "INSERT INTO pessoa_juridica(cnpj, id_cliente, inscricao_estadual, razao_social, nome_fantasia) values(@cnpj, @@IDENTITY, @inscricao_estadual, @razao_social, @nome_fantasia)";
+                             + "INSERT INTO pessoa_juridica(cnpj, id_usuario, inscricao_estadual, razao_social, nome_fantasia) values(@cnpj, @@IDENTITY, @inscricao_estadual, @razao_social, @nome_fantasia)";
                     break;
                 case "FCN":
                     sqlQuery = "INSERT INTO funcionario(id_usuario, cargo, setor, turno) values(@@IDENTITY, @cargo, @setor, @turno)";
@@ -144,12 +144,12 @@ namespace ProjetoGenesys.App.model
                 case "PF":
                     sqlQueryColumns = ", c.tipo, pf.cpf, pf.dataNasc";
                     sqlQueryJoin    = "INNER JOIN CLIENTE c ON c.id_usuario = u.id_usuario  "
-                                    + "INNER JOIN PESSOA_FISICA pf ON pf.id_cliente = c.id_cliente ";
+                                    + "INNER JOIN PESSOA_FISICA pf ON pf.id_usuario = c.id_usuario ";
                     break;
                 case "PJ":
                     sqlQueryColumns = ", c.tipo, pj.cnpj, pj.inscricao_estadual, pj.razao_social, pj.nome_fantasia";
                     sqlQueryJoin    = "INNER JOIN CLIENTE c ON c.id_usuario = u.id_usuario "
-                                    + "INNER JOIN PESSOA_JURIDICA pj ON pj.id_cliente = c.id_cliente ";
+                                    + "INNER JOIN PESSOA_JURIDICA pj ON pj.id_usuario = c.id_usuario ";
                     break;
                 case "FCN":
                     sqlQueryColumns = ", f.cargo, f.setor, f.turno";
@@ -222,12 +222,33 @@ namespace ProjetoGenesys.App.model
 
         public int AtualizarUsuario(string idUsuario, string tipoUsuario, PojoUsuario pojoUsuario, PojoPessoaFisica pojoPf, PojoPessoaJuridica pojoPj, PojoFuncionario pojoFcn)
         {
-            string sqlQuery = "UPDATE USUARIO SET nome=@nome WHERE id_usuario=" + idUsuario;
+            string sqlQuery = "";
+
+            switch (tipoUsuario)
+            {
+                case "PF":
+                    sqlQuery =   "UPDATE PESSOA_FISICA SET cpf=@cpf, dataNasc=@dataNasc FROM PESSOA_FISICA pf "
+                               + "INNER JOIN USUARIO u ON u.id_usuario = pf.id_usuario WHERE u.id_usuario=" + idUsuario;
+                    break;
+                case "PJ":
+                    sqlQuery =   "UPDATE PESSOA_JURIDICA SET cnpj=@cnpj, inscricao_estadual=@inscricao_estadual, razao_social=@razao_social, nome_fantasia=@nome_fantasia FROM PESSOA_JURIDICA pj "
+                               + "INNER JOIN USUARIO u ON u.id_usuario = pj.id_usuario WHERE u.id_usuario=" + idUsuario;
+                    break;
+                case "FCN":
+                    sqlQuery =   "UPDATE FUNCIONARIO SET cargo=@cargo, setor=@setor, turno=@turno FROM FUNCIONARIO f "
+                               + "INNER JOIN USUARIO u ON u.id_usuario = f.id_usuario WHERE u.id_usuario=" + idUsuario;
+                    break;
+            }
+            
+            string sqlTransaction =   "UPDATE USUARIO SET nome=@nome, email=@email, senha=@senha WHERE id_usuario=" + idUsuario + " "
+                                    + "UPDATE ENDERECO SET logradouro=@logradouro, numero=@numero, cep=@cep, bairro=@bairro, cidade=@cidade, uf=@uf, pais=@pais FROM ENDERECO e "
+                                    + "INNER JOIN USUARIO u ON u.id_usuario = e.id_usuario WHERE u.id_usuario=" + idUsuario + " "
+                                    + sqlQuery;
 
             try
             {
                 sqlConnection.Open();
-                SqlCommand sqlCommand = new SqlCommand(sqlQuery, sqlConnection);
+                SqlCommand sqlCommand = new SqlCommand(sqlTransaction, sqlConnection);
 
                 #region PojoUsuario
                 sqlCommand.Parameters.Add(new SqlParameter("@nome", pojoUsuario.getNome()));
@@ -248,7 +269,6 @@ namespace ProjetoGenesys.App.model
                         #region PojoPessoaFisica
                         sqlCommand.Parameters.Add(new SqlParameter("@cpf", pojoPf.getCpf()));
                         sqlCommand.Parameters.Add(new SqlParameter("@dataNasc", Convert.ToDateTime(pojoPf.getDataNasc())));
-                        sqlCommand.Parameters.Add(new SqlParameter("@tipo", pojoPf.getTipo()));
                         #endregion
                         break;
                     case "PJ":
@@ -257,7 +277,6 @@ namespace ProjetoGenesys.App.model
                         sqlCommand.Parameters.Add(new SqlParameter("@inscricao_estadual", pojoPj.getInscricaoEstadual()));
                         sqlCommand.Parameters.Add(new SqlParameter("@razao_social", pojoPj.getRazaoSocial()));
                         sqlCommand.Parameters.Add(new SqlParameter("@nome_fantasia", pojoPj.getNomeFantasia()));
-                        sqlCommand.Parameters.Add(new SqlParameter("@tipo", pojoPj.getTipo()));
                         #endregion
                         break;
                     case "FCN":

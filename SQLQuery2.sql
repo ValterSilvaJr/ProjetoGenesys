@@ -21,7 +21,7 @@ BEGIN TRANSACTION @TranName
 	
 	insert into CLIENTE(id_usuario, tipo) values(@@IDENTITY, 'PF')
 	
-	insert into PESSOA_FISICA(cpf,id_cliente, dataNasc) values('13177678800', @@IDENTITY, '2010-05-25')
+	insert into PESSOA_FISICA(cpf,id_usuario, dataNasc) values('13177678800', @@IDENTITY, '2010-05-25')
 	
 COMMIT TRANSACTION @TranName
 
@@ -58,7 +58,7 @@ UPDATE ENDERECO
 
 UPDATE PESSOA_FISICA
 	SET cpf='00045688000' FROM PESSOA_FISICA pf
-	inner join CLIENTE c ON c.id_cliente = pf.id_cliente WHERE c.id_cliente = 8;
+	inner join USUARIO u ON u.id_usuario = pf.id_usuario WHERE u.id_usuario = 1;
 COMMIT
 
 UPDATE PESSOA_JURIDICA
@@ -76,13 +76,13 @@ UPDATE FUNCIONARIO
 select u.id_usuario 'ID', c.id_cliente 'ID CLIENTE', e.id_endereco 'ID END', u.nome 'NOME COMPLETO', pf.cpf 'CPF', pf.dataNasc 'IDADE', e.logradouro 'LOGRADOURO', e.numero 'N', e.bairro 'BAIRRO', e.cidade 'CIDADE', e.uf 'ESTADO', e.pais 'PAÍS' from USUARIO u
 inner join ENDERECO e on e.id_usuario = u.id_usuario
 inner join CLIENTE c on c.id_usuario = u.id_usuario
-inner join PESSOA_FISICA pf on pf.id_cliente = c.id_cliente
+inner join PESSOA_FISICA pf on pf.id_usuario = c.id_usuario
 
 
 select u.id_usuario 'ID', c.id_cliente 'ID CLIENTE', e.id_endereco 'ID END', u.nome 'NOME COMPLETO', pj.razao_social 'RAZÃO SOCIAL', pj.nome_fantasia 'NOME FANTASIA', pj.cnpj 'CNPJ', pj.inscricao_estadual 'I.E.', e.logradouro 'LOGRADOURO', e.numero 'N', e.bairro 'BAIRRO', e.cidade 'CIDADE', e.uf 'ESTADO', e.pais 'PAÍS' from USUARIO u
 inner join ENDERECO e on e.id_usuario = u.id_usuario
 inner join CLIENTE c on c.id_usuario = u.id_usuario
-inner join PESSOA_JURIDICA pj on pj.id_cliente = c.id_cliente
+inner join PESSOA_JURIDICA pj on pj.id_usuario = c.id_usuario
 
 
 select u.id_usuario, u.nome, u.email, e.logradouro, e.numero, f.id_funcionario, f.cargo, f.setor, f.turno from USUARIO u
@@ -95,7 +95,7 @@ inner join FUNCIONARIO f ON f.id_usuario = u.id_usuario
 /*Filtra os usuários da tabela pelo ID*/
 select u.id_usuario 'ID', c.id_cliente 'ID CLIENTE', e.id_endereco 'ID END', u.nome 'NOME COMPLETO', pf.cpf 'CPF', pf.dataNasc 'IDADE', e.logradouro 'LOGRADOURO', e.numero 'N', e.bairro 'BAIRRO', e.cidade 'CIDADE', e.uf 'ESTADO', e.pais 'PAÍS' from CLIENTE c
 inner join USUARIO u on u.id_usuario = c.id_usuario
-inner join PESSOA_FISICA pf on pf.id_cliente = c.id_usuario
+inner join PESSOA_FISICA pf on pf.id_usuario = c.id_usuario
 inner join ENDERECO e on e.id_usuario = u.id_usuario
 where u.id_usuario = 8
 

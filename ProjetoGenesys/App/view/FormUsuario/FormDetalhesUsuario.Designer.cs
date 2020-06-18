@@ -319,6 +319,7 @@
             // mskInscEst
             // 
             this.mskInscEst.Location = new System.Drawing.Point(123, 52);
+            this.mskInscEst.Mask = "00000000000000000000";
             this.mskInscEst.Name = "mskInscEst";
             this.mskInscEst.Size = new System.Drawing.Size(171, 23);
             this.mskInscEst.TabIndex = 8;
@@ -326,9 +327,11 @@
             // mskCnpj
             // 
             this.mskCnpj.Location = new System.Drawing.Point(123, 12);
+            this.mskCnpj.Mask = "00.000.000/0000-00";
             this.mskCnpj.Name = "mskCnpj";
             this.mskCnpj.Size = new System.Drawing.Size(171, 23);
             this.mskCnpj.TabIndex = 7;
+            this.mskCnpj.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
             // lblLogradouro
             // 

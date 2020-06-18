@@ -146,6 +146,7 @@
             // txtEmail
             // 
             this.txtEmail.Location = new System.Drawing.Point(123, 52);
+            this.txtEmail.MaxLength = 100;
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(305, 23);
             this.txtEmail.TabIndex = 6;
@@ -153,6 +154,7 @@
             // txtNome
             // 
             this.txtNome.Location = new System.Drawing.Point(123, 12);
+            this.txtNome.MaxLength = 100;
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(305, 23);
             this.txtNome.TabIndex = 5;
@@ -161,6 +163,7 @@
             // 
             this.mskSenha.Location = new System.Drawing.Point(123, 92);
             this.mskSenha.Name = "mskSenha";
+            this.mskSenha.PasswordChar = '●';
             this.mskSenha.Size = new System.Drawing.Size(171, 23);
             this.mskSenha.TabIndex = 4;
             // 
@@ -199,7 +202,9 @@
             // 
             // txtUf
             // 
+            this.txtUf.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtUf.Location = new System.Drawing.Point(611, 52);
+            this.txtUf.MaxLength = 2;
             this.txtUf.Name = "txtUf";
             this.txtUf.Size = new System.Drawing.Size(23, 23);
             this.txtUf.TabIndex = 18;
@@ -387,6 +392,7 @@
             // mskDataNasc
             // 
             this.mskDataNasc.Location = new System.Drawing.Point(123, 52);
+            this.mskDataNasc.Mask = "00/00/0000";
             this.mskDataNasc.Name = "mskDataNasc";
             this.mskDataNasc.Size = new System.Drawing.Size(171, 23);
             this.mskDataNasc.TabIndex = 6;
@@ -394,9 +400,11 @@
             // mskCpf
             // 
             this.mskCpf.Location = new System.Drawing.Point(123, 12);
+            this.mskCpf.Mask = "00.000.000-00";
             this.mskCpf.Name = "mskCpf";
             this.mskCpf.Size = new System.Drawing.Size(171, 23);
             this.mskCpf.TabIndex = 5;
+            this.mskCpf.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
             // lblCpf
             // 
@@ -453,16 +461,20 @@
             // mskInscEst
             // 
             this.mskInscEst.Location = new System.Drawing.Point(123, 52);
+            this.mskInscEst.Mask = "00000000000000000000";
             this.mskInscEst.Name = "mskInscEst";
             this.mskInscEst.Size = new System.Drawing.Size(171, 23);
             this.mskInscEst.TabIndex = 8;
+            this.mskInscEst.ValidatingType = typeof(int);
             // 
             // mskCnpj
             // 
             this.mskCnpj.Location = new System.Drawing.Point(123, 12);
+            this.mskCnpj.Mask = "00.000.000/0000-00";
             this.mskCnpj.Name = "mskCnpj";
             this.mskCnpj.Size = new System.Drawing.Size(171, 23);
             this.mskCnpj.TabIndex = 7;
+            this.mskCnpj.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
             // lblCnpj
             // 

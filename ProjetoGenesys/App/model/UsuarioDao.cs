@@ -37,7 +37,7 @@ namespace ProjetoGenesys.App.model
                 + "INSERT INTO usuario(nome, email, senha) values(@nome, @email, @senha) "
                 + "INSERT INTO endereco(id_usuario ,logradouro, numero, cep, bairro, cidade, uf, pais) values(@@IDENTITY, @logradouro, @numero, @cep, @bairro, @cidade, @uf, @pais) "
                 + sqlQuery
-                + " COMMIT";
+                + " IF @@ERROR = 0 COMMIT ELSE ROLLBACK";
 
             try
             {
@@ -219,7 +219,6 @@ namespace ProjetoGenesys.App.model
                 }
             }
         }
-
         public int AtualizarUsuario(string idUsuario, string tipoUsuario, PojoUsuario pojoUsuario, PojoPessoaFisica pojoPf, PojoPessoaJuridica pojoPj, PojoFuncionario pojoFcn)
         {
             string sqlQuery = "";

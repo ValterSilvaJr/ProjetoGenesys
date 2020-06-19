@@ -240,6 +240,7 @@
             // mskCep
             // 
             this.mskCep.Location = new System.Drawing.Point(123, 52);
+            this.mskCep.Mask = "00000-000";
             this.mskCep.Name = "mskCep";
             this.mskCep.Size = new System.Drawing.Size(84, 23);
             this.mskCep.TabIndex = 9;
@@ -396,6 +397,7 @@
             this.mskDataNasc.Name = "mskDataNasc";
             this.mskDataNasc.Size = new System.Drawing.Size(171, 23);
             this.mskDataNasc.TabIndex = 6;
+            this.mskDataNasc.ValidatingType = typeof(System.DateTime);
             // 
             // mskCpf
             // 

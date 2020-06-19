@@ -32,7 +32,7 @@
             this.pnlSlideMenu = new System.Windows.Forms.Panel();
             this.pnlGerarRelatorioSubmenu = new System.Windows.Forms.Panel();
             this.btnConsultarVeiculos = new System.Windows.Forms.Button();
-            this.btnConsultarUsuarios = new System.Windows.Forms.Button();
+            this.btnConsultarClientes = new System.Windows.Forms.Button();
             this.btnGerarRelatorio = new System.Windows.Forms.Button();
             this.pnlLocacaoSubmenu = new System.Windows.Forms.Panel();
             this.btnRegistrarDevolucao = new System.Windows.Forms.Button();
@@ -87,7 +87,7 @@
             // 
             this.pnlGerarRelatorioSubmenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.pnlGerarRelatorioSubmenu.Controls.Add(this.btnConsultarVeiculos);
-            this.pnlGerarRelatorioSubmenu.Controls.Add(this.btnConsultarUsuarios);
+            this.pnlGerarRelatorioSubmenu.Controls.Add(this.btnConsultarClientes);
             this.pnlGerarRelatorioSubmenu.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlGerarRelatorioSubmenu.Location = new System.Drawing.Point(0, 545);
             this.pnlGerarRelatorioSubmenu.Name = "pnlGerarRelatorioSubmenu";
@@ -110,21 +110,21 @@
             this.btnConsultarVeiculos.UseVisualStyleBackColor = true;
             this.btnConsultarVeiculos.Click += new System.EventHandler(this.btnConsultarVeiculos_Click);
             // 
-            // btnConsultarUsuarios
+            // btnConsultarClientes
             // 
-            this.btnConsultarUsuarios.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnConsultarUsuarios.FlatAppearance.BorderSize = 0;
-            this.btnConsultarUsuarios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnConsultarUsuarios.ForeColor = System.Drawing.Color.LightGray;
-            this.btnConsultarUsuarios.Location = new System.Drawing.Point(0, 0);
-            this.btnConsultarUsuarios.Name = "btnConsultarUsuarios";
-            this.btnConsultarUsuarios.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.btnConsultarUsuarios.Size = new System.Drawing.Size(250, 35);
-            this.btnConsultarUsuarios.TabIndex = 0;
-            this.btnConsultarUsuarios.Text = "Consultar Usuarios";
-            this.btnConsultarUsuarios.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnConsultarUsuarios.UseVisualStyleBackColor = true;
-            this.btnConsultarUsuarios.Click += new System.EventHandler(this.btnConsultarUsuarios_Click);
+            this.btnConsultarClientes.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnConsultarClientes.FlatAppearance.BorderSize = 0;
+            this.btnConsultarClientes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnConsultarClientes.ForeColor = System.Drawing.Color.LightGray;
+            this.btnConsultarClientes.Location = new System.Drawing.Point(0, 0);
+            this.btnConsultarClientes.Name = "btnConsultarClientes";
+            this.btnConsultarClientes.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.btnConsultarClientes.Size = new System.Drawing.Size(250, 35);
+            this.btnConsultarClientes.TabIndex = 0;
+            this.btnConsultarClientes.Text = "Consultar Clientes";
+            this.btnConsultarClientes.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnConsultarClientes.UseVisualStyleBackColor = true;
+            this.btnConsultarClientes.Click += new System.EventHandler(this.btnConsultarUsuarios_Click);
             // 
             // btnGerarRelatorio
             // 
@@ -453,7 +453,7 @@
         private System.Windows.Forms.PictureBox pcbLogo;
         private System.Windows.Forms.Panel pnlGerarRelatorioSubmenu;
         private System.Windows.Forms.Button btnConsultarVeiculos;
-        private System.Windows.Forms.Button btnConsultarUsuarios;
+        private System.Windows.Forms.Button btnConsultarClientes;
     }
 }
 

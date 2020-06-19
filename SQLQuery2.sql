@@ -15,17 +15,18 @@ SELECT @TranName = 'Inserir Dados PF'
 
 BEGIN TRANSACTION @TranName
 
-	insert into USUARIO(nome, email, senha) values('Roberto','roberto@mail.com','12345678');
+	insert into USUARIO(nome, email, senha) values('Valter','valter4@mail.com','12345678');
 	
 	insert into ENDERECO(id_usuario ,logradouro, numero, cep, bairro, cidade, uf, pais) values(@@IDENTITY,'Rua Três','12B','50882-059','Townsville','Luganenhum','MG','Multiverso');
 	
 	insert into CLIENTE(id_usuario, tipo) values(@@IDENTITY, 'PF')
 	
-	insert into PESSOA_FISICA(cpf,id_usuario, dataNasc) values('13177678800', @@IDENTITY, '2010-05-25')
-	
-COMMIT TRANSACTION @TranName
+	insert into PESSOA_FISICA(cpf,id_usuario, dataNasc) values('22177678800', @@IDENTITY, '2010-05-25')
 
-
+IF @@ERROR = 0
+	COMMIT TRANSACTION @TranName
+ELSE
+	ROLLBACK
 
 
 /*TESTES*/
@@ -125,4 +126,4 @@ alter table endereco add id_usuario int CONSTRAINT FK_ID_USUARIO_ENDERECO FOREIG
 
 
 
-delete from USUARIO
+delete from USUARIO where id_usuario=23

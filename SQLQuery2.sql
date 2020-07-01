@@ -6,8 +6,11 @@ select * from PESSOA_FISICA
 select * from PESSOA_JURIDICA
 select * from FUNCIONARIO
 
-
-
+exec sp_helpconstraint usuario
+exec sp_helpconstraint endereco
+exec sp_helpconstraint cliente
+exec sp_helpconstraint pessoa_fisica
+exec sp_helpconstraint pessoa_juridica
 
 /*Insere dados nas tabelas relacionadas*/
 DECLARE @TranName varchar(20);
@@ -15,18 +18,57 @@ SELECT @TranName = 'Inserir Dados PF'
 
 BEGIN TRANSACTION @TranName
 
-	insert into USUARIO(nome, email, senha) values('Valter','valter4@mail.com','12345678');
+	insert into USUARIO(nome, email, senha) values('Valter','valter54@mail.com','12345678');
 	
 	insert into ENDERECO(id_usuario ,logradouro, numero, cep, bairro, cidade, uf, pais) values(@@IDENTITY,'Rua Três','12B','50882-059','Townsville','Luganenhum','MG','Multiverso');
 	
 	insert into CLIENTE(id_usuario, tipo) values(@@IDENTITY, 'PF')
 	
-	insert into PESSOA_FISICA(cpf,id_usuario, dataNasc) values('22177678800', @@IDENTITY, '2010-05-25')
+	insert into PESSOA_FISICA(cpf,id_usuario, dataNasc) values('12177678800', @@IDENTITY, '2010-05-25')
 
 IF @@ERROR = 0
 	COMMIT TRANSACTION @TranName
 ELSE
 	ROLLBACK
+
+/*PJ*/
+DECLARE @TranName varchar(20);
+SELECT @TranName = 'Inserir Dados PJ'
+
+BEGIN TRANSACTION @TranName
+
+	insert into USUARIO(nome, email, senha) values('Empresa X','empresax@mail.com','12345678');
+	
+	insert into ENDERECO(id_usuario ,logradouro, numero, cep, bairro, cidade, uf, pais) values(@@IDENTITY,'Avenida Giovani Gronch','2000','50882-059','Centro Empresarial','São Paulo','SP','Brasil');
+	
+	insert into CLIENTE(id_usuario, tipo) values(@@IDENTITY, 'PJ')
+	
+	insert into PESSOA_JURIDICA(cnpj,id_usuario, inscricao_estadual, razao_social, nome_fantasia) values('11111111000100', @@IDENTITY, '11111111','Empresa X S.A.','Empresa Experience')
+
+IF @@ERROR = 0
+	COMMIT TRANSACTION @TranName
+ELSE
+	ROLLBACK
+
+/*FCN*/
+DECLARE @TranName varchar(20);
+SELECT @TranName = 'Inserir Dados FCN'
+
+BEGIN TRANSACTION @TranName
+
+	insert into USUARIO(nome, email, senha) values('Valter','valter.admin@genesys.com','12345678');
+	
+	insert into ENDERECO(id_usuario ,logradouro, numero, cep, bairro, cidade, uf, pais) values(@@IDENTITY,'Rua dos Pinheiros','545','04488000','Pinheiros','São Paulo','SP','Brasil');
+
+	insert into FUNCIONARIO(id_usuario, cargo, setor, turno) values(@@IDENTITY, 'Desenvolvedor Front-end','Mobile','Noite');
+	
+IF @@ERROR = 0
+	COMMIT TRANSACTION @TranName
+ELSE
+	ROLLBACK
+
+
+
 
 
 /*TESTES*/
@@ -126,4 +168,4 @@ alter table endereco add id_usuario int CONSTRAINT FK_ID_USUARIO_ENDERECO FOREIG
 
 
 
-delete from USUARIO where id_usuario=23
+delete from USUARIO

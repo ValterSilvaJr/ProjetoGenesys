@@ -18,28 +18,44 @@ namespace ProjetoGenesys.App.view
     public partial class FormBuscarUsuario : Form
     {
         UsuarioDao usuarioDao = new UsuarioDao();
-        public FormBuscarUsuario()
+        string tipoUsuario;
+        public FormBuscarUsuario(string tipoUsuarioParam)
         {
             InitializeComponent();
+            tipoUsuario = tipoUsuarioParam;
         }
 
         private void FormBuscarUsuario_Load(object sender, EventArgs e)
         {
-            usuarioDao.ListarUsuarios(dgvBuscarUsuario);
+            usuarioDao.ListarUsuarios(dgvBuscarUsuario, tipoUsuario);
         }
 
         private void dgvBuscarUsuario_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            //FormDetalhesUsuario formDetalhes;
-            //Comando para pegar o valor da célula clicada
-            string tipoUsuario = dgvBuscarUsuario.CurrentRow.Cells[3].Value.ToString();
-            string idUsuario = dgvBuscarUsuario.CurrentRow.Cells[4].Value.ToString();
-            //formDetalhes = new FormDetalhesUsuario(idUsuario, tipoUsuario);
+            string tipoUsuarioDataTable = "";
 
-            if (e.ColumnIndex == 4)
+            switch (tipoUsuario)
             {
-                //AbrirChildForm.exibirFormularioChild(new FormDetalhesUsuario(idUsuario, tipoUsuario), pnlChildForm);
-                AbrirChildForm(new FormDetalhesUsuario(idUsuario, tipoUsuario));
+                case "Cliente":
+                    //Comando para pegar o valor da célula clicada
+                    tipoUsuarioDataTable = dgvBuscarUsuario.CurrentRow.Cells[4].Value.ToString();
+                    string idUsuario = dgvBuscarUsuario.CurrentRow.Cells[1].Value.ToString();
+
+                    if (e.ColumnIndex == 5)
+                    {
+                        //AbrirChildForm.exibirFormularioChild(new FormDetalhesUsuario(idUsuario, tipoUsuario), pnlChildForm);
+                        AbrirChildForm(new FormDetalhesUsuario(idUsuario, tipoUsuarioDataTable));
+                    }
+
+                    break;
+                case "Funcionario":
+                    idUsuario = dgvBuscarUsuario.CurrentRow.Cells[1].Value.ToString();
+                    if (e.ColumnIndex == 5)
+                    {
+                        //AbrirChildForm.exibirFormularioChild(new FormDetalhesUsuario(idUsuario, tipoUsuario), pnlChildForm);
+                        AbrirChildForm(new FormDetalhesUsuario(idUsuario, tipoUsuarioDataTable));
+                    }
+                    break;
             }
         }
         

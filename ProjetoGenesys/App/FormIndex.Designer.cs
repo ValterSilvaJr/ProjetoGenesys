@@ -52,6 +52,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.pnlChildForm = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnConsultarFcn = new System.Windows.Forms.Button();
             this.pnlSlideMenu.SuspendLayout();
             this.pnlGerarRelatorioSubmenu.SuspendLayout();
             this.pnlLocacaoSubmenu.SuspendLayout();
@@ -86,12 +87,13 @@
             // pnlGerarRelatorioSubmenu
             // 
             this.pnlGerarRelatorioSubmenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.pnlGerarRelatorioSubmenu.Controls.Add(this.btnConsultarFcn);
             this.pnlGerarRelatorioSubmenu.Controls.Add(this.btnConsultarVeiculos);
             this.pnlGerarRelatorioSubmenu.Controls.Add(this.btnConsultarClientes);
             this.pnlGerarRelatorioSubmenu.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlGerarRelatorioSubmenu.Location = new System.Drawing.Point(0, 545);
             this.pnlGerarRelatorioSubmenu.Name = "pnlGerarRelatorioSubmenu";
-            this.pnlGerarRelatorioSubmenu.Size = new System.Drawing.Size(250, 80);
+            this.pnlGerarRelatorioSubmenu.Size = new System.Drawing.Size(250, 116);
             this.pnlGerarRelatorioSubmenu.TabIndex = 7;
             // 
             // btnConsultarVeiculos
@@ -399,6 +401,22 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // btnConsultarFcn
+            // 
+            this.btnConsultarFcn.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnConsultarFcn.FlatAppearance.BorderSize = 0;
+            this.btnConsultarFcn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnConsultarFcn.ForeColor = System.Drawing.Color.LightGray;
+            this.btnConsultarFcn.Location = new System.Drawing.Point(0, 70);
+            this.btnConsultarFcn.Name = "btnConsultarFcn";
+            this.btnConsultarFcn.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.btnConsultarFcn.Size = new System.Drawing.Size(250, 35);
+            this.btnConsultarFcn.TabIndex = 2;
+            this.btnConsultarFcn.Text = "Consultar Funcionarios";
+            this.btnConsultarFcn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnConsultarFcn.UseVisualStyleBackColor = true;
+            this.btnConsultarFcn.Click += new System.EventHandler(this.btnConsultarFcn_Click_1);
+            // 
             // FormIndex
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -454,6 +472,7 @@
         private System.Windows.Forms.Panel pnlGerarRelatorioSubmenu;
         private System.Windows.Forms.Button btnConsultarVeiculos;
         private System.Windows.Forms.Button btnConsultarClientes;
+        private System.Windows.Forms.Button btnConsultarFcn;
     }
 }
 

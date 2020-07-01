@@ -15,6 +15,11 @@ namespace ProjetoGenesys.App.model
 
         public int CadastrarUsuario(PojoUsuario pojoUsuario, PojoPessoaFisica pojoPf, PojoPessoaJuridica pojoPj, PojoFuncionario pojoFcn, string tipoUsuario)
         {
+            /* TODO
+             * 1 - Cadastrar o usuário funcionário na tabela cliente
+             
+             */
+
             string sqlQuery = "";
 
             switch (tipoUsuario)
@@ -100,10 +105,33 @@ namespace ProjetoGenesys.App.model
                 }
             }
         }
-        public bool ListarUsuarios(DataGridView dgvUsuarios)
+        public bool ListarUsuarios(DataGridView dgvUsuarios, string tipoUsuario)
         {
-            string sqlQuery = "SELECT u.id_usuario, u.nome, u.email, c.tipo FROM USUARIO u " +
-                              "INNER JOIN CLIENTE c on u.id_usuario = c.id_usuario";
+            string sqlQuery = "";
+
+            switch (tipoUsuario)
+            {
+                case "Cliente":
+                    sqlQuery = "SELECT u.id_usuario, u.nome, u.email, c.tipo FROM USUARIO u " +
+                               "INNER JOIN CLIENTE c on c.id_usuario = u.id_usuario";
+                    dgvUsuarios.Columns[0].HeaderCell.Value = "Id";
+                    dgvUsuarios.Columns[1].HeaderCell.Value = "Nome";
+                    dgvUsuarios.Columns[2].HeaderCell.Value = "Email";
+                    dgvUsuarios.Columns[3].HeaderCell.Value = "Tipo";
+                    dgvUsuarios.Columns[4].Visible = false;
+                    dgvUsuarios.Columns[5].HeaderCell.Value = "Detalhes";
+                    break;
+                case "Funcionario":
+                    sqlQuery = "SELECT u.id_usuario, u.nome, u.email, f.cargo FROM USUARIO u " +
+                               "INNER JOIN FUNCIONARIO f on f.id_usuario = u.id_usuario";
+                    dgvUsuarios.Columns[0].HeaderCell.Value = "Id";
+                    dgvUsuarios.Columns[1].HeaderCell.Value = "Nome";
+                    dgvUsuarios.Columns[2].HeaderCell.Value = "Email";
+                    dgvUsuarios.Columns[3].Visible = false;
+                    dgvUsuarios.Columns[4].HeaderCell.Value = "Cargo";
+                    dgvUsuarios.Columns[5].HeaderCell.Value = "Detalhes";
+                    break;
+            }
 
             try
             {

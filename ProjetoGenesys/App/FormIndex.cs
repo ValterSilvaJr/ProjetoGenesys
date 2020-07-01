@@ -136,7 +136,7 @@ namespace ProjetoGenesys
         private void btnConsultarUsuarios_Click(object sender, EventArgs e)
         {
             //AbrirChildForm(new FormBuscarUsuario());
-            AbrirChildForm.exibirFormularioChild(new FormBuscarUsuario(), pnlChildForm);
+            AbrirChildForm.exibirFormularioChild(new FormBuscarUsuario("Cliente"), pnlChildForm);
             EsconderSubmenu();
         }
 
@@ -144,6 +144,13 @@ namespace ProjetoGenesys
         {
             EsconderSubmenu();
         }
+
+        private void btnConsultarFcn_Click_1(object sender, EventArgs e)
+        {
+            AbrirChildForm.exibirFormularioChild(new FormBuscarUsuario("Funcionario"), pnlChildForm);
+            EsconderSubmenu();
+        }
+
         #endregion
         /*
         private Form formularioAtivo = null;

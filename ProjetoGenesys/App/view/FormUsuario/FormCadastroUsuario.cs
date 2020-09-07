@@ -89,12 +89,13 @@ namespace ProjetoGenesys.App.view
         private void btnInserir_Click(object sender, EventArgs e)
         {
             usuarioDao = new UsuarioDao();
+            string senhaCriptografada = MD5Hash.CalcularHash(mskSenha.Text);
             
             #region PojoUsuario
             pojoUsuario = new PojoUsuario();
             pojoUsuario.setNome(txtNome.Text);
             pojoUsuario.setEmail(txtEmail.Text);
-            pojoUsuario.setSenha(mskSenha.Text);
+            pojoUsuario.setSenha(senhaCriptografada);
             pojoUsuario.setLogradouro(txtLogradouro.Text);
             pojoUsuario.setNumero(txtNumero.Text);
             pojoUsuario.setCep(mskCep.Text);

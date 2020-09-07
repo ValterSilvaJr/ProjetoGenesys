@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ProjetoGenesys.App.controller
 {
-    public static class MD5Hash
+    public class MD5Hash
     {
         public static string CalcularHash(string senha)
         {

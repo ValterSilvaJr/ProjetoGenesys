@@ -171,17 +171,17 @@ namespace ProjetoGenesys.App.model
             {
                 case "PF":
                     sqlQueryColumns = ", c.tipo, pf.cpf, pf.dataNasc";
-                    sqlQueryJoin    = "INNER JOIN CLIENTE c ON c.id_usuario = u.id_usuario  "
-                                    + "INNER JOIN PESSOA_FISICA pf ON pf.id_usuario = c.id_usuario ";
+                    sqlQueryJoin    = "INNER JOIN CLIENTE c ON c.id_usuario = u.id_usuario "
+                                    + "INNER JOIN PESSOA_FISICA pf ON pf.id_usuario = c.id_cliente";
                     break;
                 case "PJ":
                     sqlQueryColumns = ", c.tipo, pj.cnpj, pj.inscricao_estadual, pj.razao_social, pj.nome_fantasia";
                     sqlQueryJoin    = "INNER JOIN CLIENTE c ON c.id_usuario = u.id_usuario "
-                                    + "INNER JOIN PESSOA_JURIDICA pj ON pj.id_usuario = c.id_usuario ";
+                                    + "INNER JOIN PESSOA_JURIDICA pj ON pj.id_usuario = c.id_cliente";
                     break;
                 case "FCN":
                     sqlQueryColumns = ", f.cargo, f.setor, f.turno";
-                    sqlQueryJoin    = "INNER JOIN FUNCIONARIO f ON f.id_usuario = u.id_usuario ";
+                    sqlQueryJoin    = "INNER JOIN FUNCIONARIO f ON f.id_usuario = u.id_usuario";
                     break;
             }
             
@@ -190,7 +190,7 @@ namespace ProjetoGenesys.App.model
                                       + " FROM USUARIO u "
                                       + "INNER JOIN ENDERECO e ON e.id_usuario = u.id_usuario "
                                       + sqlQueryJoin
-                                      + "WHERE u.id_usuario =" + idUsuario;
+                                      + " WHERE u.id_usuario = " + idUsuario;
 
             try
             {

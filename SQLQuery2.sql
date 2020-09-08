@@ -12,19 +12,26 @@ exec sp_helpconstraint cliente
 exec sp_helpconstraint pessoa_fisica
 exec sp_helpconstraint pessoa_juridica
 
+/*TESTES TABELA DETALHES USUARIO*/
+select u.id_usuario 'ID USUARIO',pf.id_usuario 'ID PF', c.id_cliente 'ID CLIENTE',u.nome, u.email, e.logradouro, e.bairro, c.tipo, pf.cpf, pf.dataNasc from usuario u
+inner join endereco e on e.id_usuario = u.id_usuario
+inner join cliente c on c.id_usuario = u.id_usuario
+inner join PESSOA_FISICA pf on pf.id_usuario = c.id_cliente
+where u.id_usuario=8
+
 /*Insere dados nas tabelas relacionadas*/
 DECLARE @TranName varchar(20);
 SELECT @TranName = 'Inserir Dados PF'
 
 BEGIN TRANSACTION @TranName
 
-	insert into USUARIO(nome, email, senha) values('Valter','valter54@mail.com','12345678');
+	insert into USUARIO(nome, email, senha) values('Valter','valter325@mail.com','12345678');
 	
 	insert into ENDERECO(id_usuario ,logradouro, numero, cep, bairro, cidade, uf, pais) values(@@IDENTITY,'Rua Três','12B','50882-059','Townsville','Luganenhum','MG','Multiverso');
 	
 	insert into CLIENTE(id_usuario, tipo) values(@@IDENTITY, 'PF')
 	
-	insert into PESSOA_FISICA(cpf,id_usuario, dataNasc) values('12177678800', @@IDENTITY, '2010-05-25')
+	insert into PESSOA_FISICA(cpf,id_usuario, dataNasc) values('00044478800', @@IDENTITY, '2010-05-25')
 
 IF @@ERROR = 0
 	COMMIT TRANSACTION @TranName

@@ -6,6 +6,10 @@
   
 ![Captura de tela 2020-09-12 204655](https://user-images.githubusercontent.com/51013913/93006999-bcefe200-f539-11ea-9a0d-c29ddd212c99.jpg)
   
+<h6> Tecnologias utilizadas</h6>
+
+* Microsoft SQL Server
+* Microsoft Windows Forms C#
 
 <h6> Tarefas conclúidas</h6>
 

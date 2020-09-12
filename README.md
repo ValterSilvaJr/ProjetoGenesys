@@ -2,6 +2,13 @@
 
 <h5> Programa criado para cadastramento de usuários e veículos para locação.</h5>
 
+<h6>Tela principal do programa<h6/>
+  
+![Captura de tela 2020-09-12 204655](https://user-images.githubusercontent.com/51013913/93006999-bcefe200-f539-11ea-9a0d-c29ddd212c99.jpg)
+  
+
+<h6> Tarefas conclúidas</h6>
+
 1. - [x] Cadastramento Cliente PF
 2. - [x] Cadastramento Cliente PJ
 3. - [x] Cadastramento Cliente Funcionario

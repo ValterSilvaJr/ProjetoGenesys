@@ -21,3 +21,5 @@
 6. - [ ] Cadastramento Locação de Veículo
 7. - [ ] Cadastramento Devolução de Veículo
 8. - [ ] Listar Veículos disponíveis para locação
+9. - [ ] Listar Veículos alugados
+10. - [ ] Melhorias de interface

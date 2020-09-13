@@ -8,7 +8,7 @@
   
 <h6> Tecnologias utilizadas</h6>
 
-* Microsoft SQL Server
+* Microsoft SQL Server 2019
 * Microsoft Windows Forms C#
 
 <h6> Tarefas conclúidas</h6>
